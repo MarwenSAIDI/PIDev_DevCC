@@ -1,31 +1,28 @@
-create table Produits (
-    ID_Produit number constraint pk_produit primary key,
-    Quantitee number,
-    Prix_U Double
-);
-
 create table Payments (
-    ID_Payement number constraint pk_payment primary key,
+    ID_Payment int,
     Prix_F Double,
-    Mode_Payment varchar2(10)
+    Mode_Payment varchar(10)
 );
+alter table Payments add constraint pk_payment primary key (ID_Payment);
 
 create table Commandes (
-    ID_Commande number constraint pk_commande primary key,
-    ID_Produit number,
-    ID_Payement number,
-    Quantitee number,
+    ID_Commande int,
+    ID_Produit int,
+    ID_Payment int,
+    Quantitee int,
     Prix Double,
-    Status_commande varchar2(10)
+    Status_commande varchar(10)
 );
-alter table Commandes add constraint fk_pro_com foreign key (ID_Produit) references Produits (ID_Produit);
-alter table Commandes add constraint fk_pay_com foreign key (ID_Payement) references Payments (ID_Payement);
+alter table Commandes add constraint pk_commande primary key (ID_Commande);
+alter table Commandes add constraint fk_pay_com foreign key (ID_Payment) references Payments (ID_Payment) ON DELETE CASCADE;
 
-create table Panier (
-    ID_Panier number constraint pk_panier primary key,
-    ID_Commande number,
-    Date_C Date default sysdate(),
+create table Paniers (
+    ID_Panier int,
+    ID_Commande int,
+    Date_C Date,
     Date_U Date default Date_C,
-    Status_panier varchar2(10)
+    Status_panier varchar(10)
 );
-alter table Panier add constraint fk_com_pan foreign key (ID_Commande) references Commandes (ID_Commande);
+
+alter table Paniers add constraint pk_panier primary key (ID_Panier);
+alter table Paniers add constraint fk_com_pan foreign key (ID_Commande) references Commandes (ID_Commande) ON DELETE CASCADE;
