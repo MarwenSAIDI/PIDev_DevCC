@@ -27,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import pidev.entities.Commande;
 import pidev.entities.Commande;
 import pidev.services.CommandeCRUD;
+import pidev.services.TextFieldException;
 
 /**
  * FXML Controller class
@@ -136,23 +137,38 @@ public class CommandeController implements Initializable {
 
     @FXML
     private void AjouterCommande(ActionEvent event) {
-        int id_p = Integer.parseInt(t_prod.getText());
-        int pay = Integer.parseInt(t_pay.getText());
-        int quant = Integer.parseInt(t_quant.getText());
         
-        Commande com = new Commande();
-        com.setID_Produit(id_p);
-        com.setID_Payment(pay);
-        com.setQuantitee(quant);
-        CommandeCRUD comc = new CommandeCRUD();
-        comc.Ajouter(com);
-        
-        
-        tab_C.getItems().clear();
-        try {
-            tab_C.getItems().addAll(comc.AfficherCommande());
-        } catch (SQLException ex) {
-            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+            
+            TextFieldException.verifEmpty(t_prod.getText());
+            int id_p = Integer.parseInt(t_prod.getText());
+            
+            TextFieldException.verifEmpty(t_pay.getText());
+            int pay = Integer.parseInt(t_pay.getText());
+            
+            TextFieldException.verifEmpty(t_quant.getText());
+            int quant = Integer.parseInt(t_quant.getText());
+
+            Commande com = new Commande();
+            com.setID_Produit(id_p);
+            com.setID_Payment(pay);
+            com.setQuantitee(quant);
+            CommandeCRUD comc = new CommandeCRUD();
+            comc.Ajouter(com);
+
+
+            tab_C.getItems().clear();
+            try {
+                tab_C.getItems().addAll(comc.AfficherCommande());
+            } catch (SQLException ex) {
+                Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(TextFieldException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
     }
 
@@ -171,24 +187,37 @@ public class CommandeController implements Initializable {
     @FXML
     private void ModifierCommande(ActionEvent event) {
         
-        int id_p = Integer.parseInt(t_prod.getText());
-        int pay = Integer.parseInt(t_pay.getText());
-        int quant = Integer.parseInt(t_quant.getText());
-        
-        Commande com = new Commande();
-        com.setID_Commande(ID);
-        com.setID_Produit(id_p);
-        com.setID_Payment(pay);
-        com.setQuantitee(quant);
-        CommandeCRUD comc = new CommandeCRUD();
-        comc.Modifier(com);
-        
-        
-        tab_C.getItems().clear();
-        try {
-            tab_C.getItems().addAll(comc.AfficherCommande());
-        } catch (SQLException ex) {
-            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+            TextFieldException.verifEmpty(t_prod.getText());
+            int id_p = Integer.parseInt(t_prod.getText());
+            
+            TextFieldException.verifEmpty(t_pay.getText());
+            int pay = Integer.parseInt(t_pay.getText());
+            
+            TextFieldException.verifEmpty(t_quant.getText());
+            int quant = Integer.parseInt(t_quant.getText());
+
+            Commande com = new Commande();
+            com.setID_Commande(ID);
+            com.setID_Produit(id_p);
+            com.setID_Payment(pay);
+            com.setQuantitee(quant);
+            CommandeCRUD comc = new CommandeCRUD();
+            comc.Modifier(com);
+
+
+            tab_C.getItems().clear();
+            try {
+                tab_C.getItems().addAll(comc.AfficherCommande());
+            } catch (SQLException ex) {
+                Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(TextFieldException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
     }
 

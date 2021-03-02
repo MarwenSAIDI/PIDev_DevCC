@@ -35,6 +35,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import pidev.entities.Payment;
 import pidev.services.PaymentCRUD;
+import pidev.services.TextFieldException;
 
 /**
  * FXML Controller class
@@ -120,22 +121,32 @@ public class PaymentController implements Initializable {
     @FXML
     private void AjouterPayment(ActionEvent event) {
         
-        Double pf = Double.parseDouble(t_pf.getText());
-        String mp = cb_mp.getValue();
-        
-        Payment pay = new Payment(22,pf,mp);
-        PaymentCRUD payc = new PaymentCRUD();
-        payc.Ajouter(pay);
-
- 
-        tab_pay.getItems().clear();
-       
-        
+            
         try {
-            tab_pay.getItems().addAll(payc.AfficherPayment());
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+            TextFieldException.verifEmpty(t_pf.getText());
+            Double pf = Double.parseDouble(t_pf.getText());
+            TextFieldException.verifEmpty(cb_mp.getValue());
+            String mp = cb_mp.getValue();
+            Payment pay = new Payment(22,pf,mp);
+            PaymentCRUD payc = new PaymentCRUD();
+            payc.Ajouter(pay);
+            
+            
+            tab_pay.getItems().clear();
+            try {
+                tab_pay.getItems().addAll(payc.AfficherPayment());
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (TextFieldException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
+        
         
     
         
@@ -167,21 +178,31 @@ public class PaymentController implements Initializable {
 
     @FXML
     private void ModifierPayment(ActionEvent event) {
-        Double pf = Double.parseDouble(t_pf.getText());
-        String mp = cb_mp.getValue();
-        
-        Payment pay = new Payment(ID,pf,mp);
-        PaymentCRUD payc = new PaymentCRUD();
-        payc.Modifier(pay);
+        try{
+            TextFieldException.verifEmpty(t_pf.getText());
+            Double pf = Double.parseDouble(t_pf.getText());
+            TextFieldException.verifEmpty(cb_mp.getValue());
+            String mp = cb_mp.getValue();
 
- 
-        tab_pay.getItems().clear();
-       
-        
-        try {
-            tab_pay.getItems().addAll(payc.AfficherPayment());
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+            Payment pay = new Payment(ID,pf,mp);
+            PaymentCRUD payc = new PaymentCRUD();
+            payc.Modifier(pay);
+
+
+            tab_pay.getItems().clear();
+
+
+            try {
+                tab_pay.getItems().addAll(payc.AfficherPayment());
+            } catch (SQLException ex) {
+                Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(TextFieldException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
     }
 

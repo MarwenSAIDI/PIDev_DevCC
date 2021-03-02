@@ -33,6 +33,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import pidev.entities.Commande;
+import pidev.services.TextFieldException;
 
 
 /**
@@ -132,26 +133,39 @@ public class PanierController implements Initializable {
 
     @FXML
     private void AjouterPanier(ActionEvent event) {
-        int id_com = Integer.parseInt(t_id.getText());
         
-        LocalDate date = t_date.getValue();
-        
-        
-        String status = cb_status.getValue();
-        
-        Panier pan = new Panier();
-        pan.setID_Commande(id_com);
-        pan.setDate_C(date);
-        pan.setStatus_panier(status);
-        
-        PanierCRUD panc = new PanierCRUD();
-        panc.Ajouter(pan);
-        
-        tab_panier.getItems().clear();
-        try {
-            tab_panier.getItems().addAll(panc.AfficherPanier());
-        } catch (SQLException ex) {
-            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+            
+            TextFieldException.verifEmpty(t_id.getText());
+            int id_com = Integer.parseInt(t_id.getText());
+            
+            
+            TextFieldException.verifEmpty(t_date.getValue().toString());
+            LocalDate date = t_date.getValue();
+
+            TextFieldException.verifEmpty(cb_status.getValue());
+            String status = cb_status.getValue();
+
+            Panier pan = new Panier();
+            pan.setID_Commande(id_com);
+            pan.setDate_C(date);
+            pan.setStatus_panier(status);
+
+            PanierCRUD panc = new PanierCRUD();
+            panc.Ajouter(pan);
+
+            tab_panier.getItems().clear();
+            try {
+                tab_panier.getItems().addAll(panc.AfficherPanier());
+            } catch (SQLException ex) {
+                Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(TextFieldException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
         
     }
@@ -179,27 +193,38 @@ public class PanierController implements Initializable {
     @FXML
     private void ModifierPanier(ActionEvent event) {
         
-        int id_com = Integer.parseInt(t_id.getText());
-        
-        LocalDate date = t_date.getValue();
-        
-        
-        String status = cb_status.getValue();
-        
-        Panier pan = new Panier();
-        pan.setID_Panier(ID);
-        pan.setID_Commande(id_com);
-        pan.setDate_C(date);
-        pan.setStatus_panier(status);
-        
-        PanierCRUD panc = new PanierCRUD();
-        panc.Modifier(pan);
-        
-        tab_panier.getItems().clear();
-        try {
-            tab_panier.getItems().addAll(panc.AfficherPanier());
-        } catch (SQLException ex) {
-            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        try{
+            TextFieldException.verifEmpty(t_id.getText());
+            int id_com = Integer.parseInt(t_id.getText());
+            
+            
+            TextFieldException.verifEmpty(t_date.getValue().toString());
+            LocalDate date = t_date.getValue();
+
+            TextFieldException.verifEmpty(cb_status.getValue());
+            String status = cb_status.getValue();
+
+            Panier pan = new Panier();
+            pan.setID_Panier(ID);
+            pan.setID_Commande(id_com);
+            pan.setDate_C(date);
+            pan.setStatus_panier(status);
+
+            PanierCRUD panc = new PanierCRUD();
+            panc.Modifier(pan);
+
+            tab_panier.getItems().clear();
+            try {
+                tab_panier.getItems().addAll(panc.AfficherPanier());
+            } catch (SQLException ex) {
+                Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }catch(TextFieldException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty fields");
+            alert.setHeaderText(e.getMessage());
+            
+            alert.showAndWait();
         }
     }
 
