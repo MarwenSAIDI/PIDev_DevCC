@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="1087.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="backgroundcontroller.UIController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="74.0" prefHeight="506.0" prefWidth="240.0" styleClass="sidebar">
+         <children>
+            <Pane layoutX="30.0" layoutY="37.0" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn">
+               <children>
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="6.0" text="Les Gestions:" textFill="#2262c6">
+                     <font>
+                        <Font name="Berlin Sans FB" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="122.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion Consultation" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="154.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="185.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="215.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="246.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="277.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="307.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion " textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="44.0" fitWidth="51.0" layoutX="38.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_widescreen_24px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="98.0" layoutY="26.0" text="Accueil" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="rech" layoutX="570.0" layoutY="77.0" onKeyPressed="#rechtest" onKeyTyped="#rechtest2" opacity="0.5" prefHeight="31.0" prefWidth="240.0" promptText="Rechercher une consultation par Titre" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+      <ImageView fitHeight="22.0" fitWidth="129.0" layoutX="690.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_bell_24px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="714.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_help_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="741.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_settings_26px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="358.0" layoutY="57.0" text="Consultation" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="362.0" layoutY="341.0" prefHeight="34.0" prefWidth="414.0" spacing="10.0">
+         <children>
+            <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertButton" prefHeight="30.0" prefWidth="136.0" style="-fx-background-color: green;" text="Ajouter" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateButton" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: orange;" text="Modifier" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButton" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: red;" text="Supprimer" />
+         </children>
+      </HBox>
+      <TextField fx:id="urlpath" layoutX="372.0" layoutY="227.0" onMouseClicked="#imp" prefHeight="25.0" prefWidth="149.0" promptText="L'url de l'image" />
+      <Label layoutX="262.0" layoutY="270.0" prefHeight="0.0" prefWidth="84.0" text="Emplacement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="empField" layoutX="372.0" layoutY="267.0" prefHeight="25.0" prefWidth="149.0" />
+      <VBox layoutX="813.0" layoutY="50.0" prefHeight="35.0" prefWidth="149.0" />
+      <Button fx:id="idretour" layoutX="856.0" layoutY="25.0" mnemonicParsing="false" onAction="#retourtest" text="retour" textFill="RED" />
+      <TableView fx:id="TableView" layoutX="262.0" layoutY="391.0" onMouseClicked="#afficherform" prefHeight="245.0" prefWidth="759.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="35.0" text="ID" />
+            <TableColumn fx:id="titreColumn" prefWidth="63.0" text="Titre" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="86.0" text="Description" />
+            <TableColumn fx:id="emplacementColumn" minWidth="0.0" prefWidth="99.0" text="Emplacement" />
+            <TableColumn fx:id="imageColumn" prefWidth="475.0" text="Image" />
+         </columns>
+      </TableView>
+      <TextField fx:id="idField" layoutX="372.0" layoutY="143.0" />
+      <TextField fx:id="TitreField" layoutX="372.0" layoutY="190.0" />
+      <Label layoutX="324.0" layoutY="145.0" text="ID">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="324.0" layoutY="193.0" text="Titre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="551.0" layoutY="135.0" prefHeight="20.0" prefWidth="112.0" text="Description">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="descField" layoutX="663.0" layoutY="127.0" prefHeight="132.0" prefWidth="240.0" />
+      <Label layoutX="314.0" layoutY="230.0" prefHeight="20.0" prefWidth="44.0" text="Image">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
