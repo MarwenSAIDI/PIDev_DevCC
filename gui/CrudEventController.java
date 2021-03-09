@@ -5,7 +5,6 @@
  */
 package gui;
 
-
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import service.ServiceEvenement;
@@ -19,6 +18,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +34,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -54,7 +57,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import org.controlsfx.control.Notifications;
 import service.ServiceEvenement;
+import utilis.sqlexcept;
 
 /**
  * FXML Controller class
@@ -79,6 +84,8 @@ public class CrudEventController implements Initializable {
     private TableColumn<Evenement, String> LieuEventColumn;
     @FXML
     private TableColumn<Evenement, Date> DateEventColumn;
+       @FXML
+    private TableColumn<Evenement, Date> TarifEventColumn;
     @FXML
     private DatePicker DateEventField;
     @FXML
@@ -95,8 +102,6 @@ public class CrudEventController implements Initializable {
     private Button ModiferEventButton;
     @FXML
     private Button SupprimerEventButton;
-    @FXML
-    private TextField TypeEventField;
     @FXML
     private Label TitreEventLabel;
     @FXML
@@ -117,11 +122,47 @@ public class CrudEventController implements Initializable {
     private Button btnDeconnexion;
   private Image image;
    private ImageView imageEvent;
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private ComboBox TypeEventComboBox;
+    @FXML
+    private TextField TarifEventField;
+    @FXML
+    private Label TarifEventLabel;
+    @FXML
+    private TextField capaciteEventField;
+    @FXML
+    private Label capaciteEventLabel;
+    @FXML
+    private TableColumn<Evenement, Integer> capciteColoumn;
+    @FXML
+    private TableColumn<Evenement, Integer>nbRservatColomun;
+    @FXML
+    private TableColumn<Evenement, String>etatReservColoumn;
+    @FXML
+    private Label StatEvent;
+    @FXML
+    private Label PageReservationEventLabel;
+ 
     /**
      * Initializes the controller class.
+     * 
+     * 
+     * 
      */
+    
+         
+    
+    public void etat()
+    {
+        
+        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         ServiceEvenement cs = new ServiceEvenement();
 
          List<Evenement> lc = cs.ListClasse();
@@ -154,10 +195,29 @@ public class CrudEventController implements Initializable {
                 new PropertyValueFactory<>("date_event"));
         
         ImageEventColumn.setPrefWidth(80); 
+        
         ImageEventColumn.setCellValueFactory(
                 new PropertyValueFactory<>("image"));
         
+         TarifEventColumn.setCellValueFactory(
+                new PropertyValueFactory<>("tarif"));
+         
+         capciteColoumn.setCellValueFactory(
+                new PropertyValueFactory<>("capacite"));
+         
+         nbRservatColomun.setCellValueFactory(
+                new PropertyValueFactory<>("nb_reservation"));
+         etatReservColoumn.setCellValueFactory(
+                new PropertyValueFactory<>("etat"));
+         
+         
+         
         TableView.setItems(data);
+        
+
+         ObservableList<String> list;
+        list = FXCollections.observableArrayList("Conférence","Cinéma","Méditation","Musique","Randonnée","Sport et fitness" );
+        TypeEventComboBox.setItems(list);
         
   
     }    
@@ -165,16 +225,29 @@ public class CrudEventController implements Initializable {
   
 
     @FXML
-    private void AjoutEventButton(ActionEvent event) throws ParseException {
+    private void AjoutEventButton(ActionEvent event) throws ParseException, IOException, sqlexcept {
         String IdOrganisateur = IdOrganisteurEventField.getText();
-            String Type= TypeEventField.getText();
+         String Type= TypeEventComboBox.getSelectionModel().getSelectedItem().toString();
+             String Typee=Type;
             String Titre= TitreEventField.getText();
             String Description= DescriptionEventField.getText();
             String LieuEvent= LieuEventField.getText();
             String DateEvent= String.valueOf(DateEventField.getValue());
             int idorga = Integer.parseInt(IdOrganisateur);
             String ImagEvent= ImageEventField.getText();
-            Date Date=new SimpleDateFormat("yyyy-MM-dd").parse(DateEvent);    
+            Date Date=new SimpleDateFormat("yyyy-MM-dd").parse(DateEvent);   
+            String tarif= TarifEventField.getText();
+            float tarifF = Float.parseFloat(tarif);
+            
+                    String capacite = capaciteEventField.getText();
+                    int capa = Integer.parseInt(capacite);
+                    
+                   
+                    
+                    
+
+
+           
 //            
 //             image = new Image(getClass().getResourceAsStream(ImagEvent));
 //        imageEvent.setImage(image);
@@ -183,11 +256,16 @@ public class CrudEventController implements Initializable {
 //       ca.setTime(DateEvent);
 //       dd=ca.getTime();
 
-           if(Type.isEmpty())
-           {
-               
-               TypeEventLabel.setText( " Saisir le type de l'événement");
-           }
+//           if(Type.isEmpty())
+//           {
+//               
+//               TypeEventLabel.setText( " Saisir le type de l'événement");
+//           }
+            if(DateEvent.isEmpty())
+            {
+                               DateEventLabel.setText("Saisir la date de l'événement");
+
+            }
            else if(IdOrganisateur.isEmpty())
            {
                IdOrganisteurEventLabel.setText("Saisir l'id de l'Organisateur");
@@ -201,9 +279,10 @@ public class CrudEventController implements Initializable {
            else   if(LieuEvent.isEmpty()){
                LieuEventLabel.setText("Saisir le Lieu de l'événement");
            }
-           else if(DateEvent.isEmpty()){
-               DateEventLabel.setText("Saisir la date de l'événement");
+           else   if(tarif.isEmpty()){
+               TarifEventLabel.setText("Saisir le tarif");
            }
+          
 //
 //           if((Type.isEmpty())||(IdOrganisateur.isEmpty())||(Titre.isEmpty())||(Description.isEmpty())||(LieuEvent.isEmpty())||(DateEvent.isEmpty()))
 //           {
@@ -216,10 +295,15 @@ public class CrudEventController implements Initializable {
 //           }
            else
            {
-            Evenement c = new Evenement(0, idorga, Type, Titre,LieuEvent,Description,Date,ImagEvent);
+            Evenement c = new Evenement(0, idorga, Typee, Titre,LieuEvent,Description,Date,ImagEvent,tarifF,capa,0,"en cours");
             ServiceEvenement cs = new ServiceEvenement();
             cs.ajouter1(c);
-            
+               Notifications.create()
+                       .title("Notification !!")
+                       .text(" Vous avez ajouté un nouvel événement: "+Titre )
+                       
+                       .showInformation();
+                       
          List<Evenement> lc = cs.ListClasse();
         
         ObservableList<Evenement> data =         
@@ -236,21 +320,32 @@ public class CrudEventController implements Initializable {
        
             Evenement ev = TableView.getSelectionModel().getSelectedItem();
 
+
             String IdOrganisateur = IdOrganisteurEventField.getText();
-            String Type= TypeEventField.getText();
+            String Type= TypeEventComboBox.getSelectionModel().getSelectedItem().toString();
+
             String Titre= TitreEventField.getText();
             String Description= DescriptionEventField.getText();
             String LieuEvent= LieuEventField.getText();
             String DateEvent= String.valueOf(DateEventField.getValue());
             int idorga = Integer.parseInt(IdOrganisateur);
             Date Date=new SimpleDateFormat("yyyy-MM-dd").parse(DateEvent);  
-            String ImagEvent= ImageEventField.getText();
-            
+            String ImagEvent= (ImageEventField.getText());
+            String tarif= TarifEventField.getText();
+            float tarifF = Float.parseFloat(tarif);
+            String capacite = capaciteEventField.getText();
+                    int capa = Integer.parseInt(capacite);
            
 
-
+ Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Modification");
+            alert.setHeaderText("Voulez vous modifier cette événement");
+            alert.setContentText("Confirmez la modification");
+            Optional<ButtonType> btn = alert.showAndWait();
+            if(btn.get()==ButtonType.OK)
+            {
            
-            Evenement c = new Evenement(ev.getId(), idorga, Type, Titre,LieuEvent,Description,Date,ImagEvent);
+            Evenement c = new Evenement(ev.getId(), idorga, Type, Titre,LieuEvent,Description,Date,ImagEvent,tarifF,capa,ev.getNb_reservation(),ev.getEtat());
         ServiceEvenement cs = new ServiceEvenement();
 
         cs.ModifierEvenement(c);
@@ -261,7 +356,10 @@ public class CrudEventController implements Initializable {
         FXCollections.observableArrayList(lc );
         TableView.setItems(data);
         
-      viderChamps();     
+      viderChamps();  
+       }
+            else {alert.close();}
+            
     }
 
     @FXML
@@ -301,23 +399,69 @@ public class CrudEventController implements Initializable {
     @FXML
     private void AfficherInfoForm(MouseEvent event) {
         
+
          Evenement ev = TableView.getSelectionModel().getSelectedItem();
-       int IdOrganisateur = ev.getId_organisateur();
-       
+         int IdOrganisateur = ev.getId_organisateur();
+         ServiceEvenement cs = new ServiceEvenement();
+        float tarif =ev.getTarif();
         Date date =ev.getDate_event();
       
-Calendar calendar = Calendar.getInstance();
-calendar.setTime(date);
-
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        
+        
+        
+        
+        ObservableList<String> list;
+        list = FXCollections.observableArrayList("Conférence","Cinéma","Méditation","Musique","Randonnée","Sport et fitness" );
+        TypeEventComboBox.setItems(list);
+////        String combobox= TypeEventComboBox.getSelectionModel().toString();
+////        
+////        TypeEventComboBox.getSelectionModel().select(1);
+                
+                
+                
         IdOrganisteurEventField.setText(String.valueOf(IdOrganisateur));
-        TypeEventField.setText(String.valueOf(ev.getType()));
+//        TypeEventField.setText(String.valueOf(ev.getType()));
         TitreEventField.setText(String.valueOf(ev.getTitre()));
-        DescriptionEventField.setText(String.valueOf(ev.getDescription()));
         LieuEventField.setText(String.valueOf(ev.getLieu()));
-        DateEventField.setValue(LocalDate.now());
+        DateEventField.setValue(LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH)));
         ImageEventField.setText(String.valueOf(ev.getImage()));
+        DescriptionEventField.setText(String.valueOf(ev.getDescription()));
+        TarifEventField.setText(String.valueOf(ev.getTarif()));
+        
+                capaciteEventField.setText(String.valueOf(ev.getCapacite()));
 
-        ServiceEvenement cs = new ServiceEvenement();
+               
+                String combobox= TypeEventComboBox.getSelectionModel().toString();
+                System.out.println(combobox);
+        if("Conférence".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(0);
+        else if("Cinéma".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(1);
+         else if("Méditation".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(2);
+         else if("Musique".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(3);
+         else if("Randonnée".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(4);
+           else if("Sport et fitness".equals(ev.getType()))
+        TypeEventComboBox.getSelectionModel().select(5);
+        
+
+        String img= ev.getImage();
+        String ch="/imgEvent/";
+        String imgF= ch+img;
+        
+   //     DescriptionEventField.setText(String.valueOf(ev.getDescription()));
+
+//         String chemin="/images/icons8_microsoft_powerpoint_2019_48px.png";
+//       Image im = new Image(getClass().getResourceAsStream(chemin));
+//        imageView.setImage(im);
+
+        Image im = new Image(getClass().getResourceAsStream(imgF));
+        imageView.setImage(im);
+        
 
         List<Evenement> lc = cs.ListClasse();
         
@@ -331,26 +475,43 @@ calendar.setTime(date);
 public void viderChamps()
 {
      IdOrganisteurEventLabel.setText(null);
-      TypeEventLabel.setText(null);
+     // TypeEventLabel.setText(null);
       TitreEventLabel.setText(null);
       DescriptionEventLabel.setText(null);
       LieuEventLabel.setText(null);
       DateEventLabel.setText(null);
+      TarifEventLabel.setText(null);
  
 
  IdOrganisteurEventField.clear();
-      TypeEventField.clear();
+      //TypeEventField.clear();
       TitreEventField.clear();
       DescriptionEventField.clear();
       LieuEventField.clear();
       DateEventField.setValue(null);
       IdOrganisteurEventField.clear();
       ImageEventField.clear();
+      TarifEventField.clear();
+      capaciteEventField.clear();
+      
+      imageView.setImage(null);
 }
 
     @FXML
     private void deconnexion(ActionEvent event) {
+      
+      
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEventClient.fxml"));
+        try {
+            Parent root = loader.load();
+            btnDeconnexion.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
+
+    
 
     @FXML
     private void importerImage(MouseEvent event) {
@@ -373,7 +534,50 @@ public void viderChamps()
         alert.showAndWait();
         ImageEventField.setText("");
             }else
-            ImageEventField.setText(selected.getAbsolutePath());
+            ImageEventField.setText(selected.getName());
+        }
+    }
+
+    @FXML
+    private void clear(MouseEvent event) {
+        
+        viderChamps();
+    }
+
+    @FXML
+    private void PageStatEvent(MouseEvent event) {
+    
+    
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatEventTherapeute.fxml"));
+        try {
+            Parent root = loader.load();
+            StatEvent.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+////    @FXML
+////    private void PageReservationEvent(MouseEvent event) {
+////        
+////        FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationEventTherapeute.fxml"));
+////        try {
+////            Parent root = loader.load();
+////            btnDeconnexion.getScene().setRoot(root);
+////        } catch (IOException ex) {
+////            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+////        }
+////    }
+
+    @FXML
+    private void PageReservationEvent(MouseEvent event) {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ReservationEventTherapeute.fxml"));
+        try {
+            Parent root = loader.load();
+            PageReservationEventLabel.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
    

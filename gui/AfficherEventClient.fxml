@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEventClientController">
+     <children>
+    <Pane prefHeight="750.0" prefWidth="229.0" styleClass="sidebar">
+         <effect>
+            <DropShadow color="#ddd8d8" />
+         </effect>
+         <children>
+            <Label layoutX="30.0" layoutY="22.0" text="ZenLife" textFill="#ab7d20">
+               <font>
+                  <Font name="Century Gothic Bold" size="34.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutY="65.0" prefHeight="400.0" prefWidth="250.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les événements" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les produits " textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les recommandations " textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Profile" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Sign Out" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane> 
+      <BorderPane layoutX="255.0" prefHeight="810.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="654.0" prefWidth="385.0" styleClass="" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="EventChoisieCarte" alignment="CENTER" prefHeight="651.0" prefWidth="328.0" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label fx:id="idEvent" prefHeight="17.0" prefWidth="63.0" text="ID : " textFill="#6a7324" />
+                        <Label fx:id="idOrganisateurLabel" prefHeight="17.0" prefWidth="112.0" text="Organisateur" textFill="#6a7324" />
+                        <Label fx:id="imgEventLabel" prefHeight="17.0" prefWidth="70.0" text="img:" textFill="#6a7324" />
+                        <HBox prefHeight="60.0" prefWidth="335.0">
+                           <children>
+                              <Label fx:id="TitreEventCarte" prefHeight="48.0" prefWidth="276.0" text="Titre f " textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="LieuEventCarte" prefHeight="29.0" prefWidth="247.0" text="Lieu f " textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="21.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/peach.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox alignment="CENTER" prefHeight="24.0" prefWidth="263.0">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="171.0" text="Date de l'événement : " textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="DateEventCarte" prefHeight="24.0" prefWidth="97.0" text="Date  f" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="125.0" text="Tarif/Personne : " textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TarifEventCarte" prefHeight="40.0" prefWidth="49.0" text="Prix f" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="28.0" prefWidth="87.0" text="DT" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="33.0" prefWidth="293.0">
+                           <children>
+                              <Label fx:id="PlaceRestante" prefHeight="29.0" prefWidth="214.0" text="   Place restante :" textFill="#ff9c9c">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="PlaceRestanteCarte" prefHeight="36.0" prefWidth="184.0" text="   Place" textFill="#ff9c9c">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnLirePlus" mnemonicParsing="false" onAction="#LirePlus_Reserver" prefHeight="38.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="Lire plus sur l'événement " textFill="#828282">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="30.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <HBox prefHeight="77.0" prefWidth="293.0">
+                           <children>
+                              <Pane prefHeight="72.0" prefWidth="611.0">
+                                 <children>
+                                    <Label fx:id="EvenementEffectueCarte" layoutX="58.0" layoutY="-1.0" prefHeight="31.0" prefWidth="178.0" text="Si event passe " textFill="#cd5b09">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children></HBox>
+                     </children>
+                     <styleClass>
+                        <String fx:value="chosen-fruit-card" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </VBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="654.0" prefWidth="712.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="661.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="644.0" prefWidth="666.0" styleClass="transparent" stylesheets="@../values/style.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <VBox prefHeight="156.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Pane prefHeight="97.0" prefWidth="920.0" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="62.0" prefWidth="164.0" text="My Account" textFill="#878787">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <FontAwesomeIconView fx:id="GestionUserIcon" glyphName="USER" onMouseClicked="#GestionUser" size="50" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="882.0">
+                     <children>
+                        <Pane prefHeight="68.0" prefWidth="1059.0">
+                           <children>
+                              <Label layoutX="97.0" layoutY="14.0" prefHeight="51.0" prefWidth="235.0" text="Nos événements " textFill="#ab7d20">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="618.0" layoutY="43.0" prefHeight="17.0" prefWidth="268.0" text="Rechercher une événement en fonction du type : " />
+                              <TextField layoutX="763.0" layoutY="-3.0" prefHeight="22.0" prefWidth="197.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../values/style.css">
+                                 <font>
+                                    <Font name="Cambria" size="18.0" />
+                                 </font>
+                              </TextField>
+                              <Button layoutX="941.0" layoutY="3.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../values/style.css" text="Search" textFill="WHITE" />
+                              <ComboBox fx:id="combobox_recherType" layoutX="895.0" layoutY="39.0" onAction="#rechercherType" prefWidth="150.0" />
+                              <Pane layoutX="361.0" layoutY="-43.0" prefHeight="140.0" prefWidth="235.0">
+                                 <children>
+                                    <ImageView fx:id="imgMeteo" fitHeight="100.0" fitWidth="188.0" onMouseClicked="#AfficherMeteo" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/OpenWeather-Logo.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutY="100.0" prefHeight="17.0" prefWidth="185.0" text="La météo avec OpenWeather" textFill="#cd613a">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children></Pane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+      
+   </children>
+</AnchorPane>

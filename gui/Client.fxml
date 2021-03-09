@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="parent" prefHeight="750.0" prefWidth="1300.0" styleClass="parent" stylesheets="@stylesheet2.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClientController">
+   <children>
+      <Pane prefHeight="750.0" prefWidth="250.0" styleClass="sidebar">
+         <effect>
+            <DropShadow color="#ddd8d8" />
+         </effect>
+         <children>
+            <Label layoutX="96.0" layoutY="29.0" text="Instagram" textFill="#98a0a6">
+               <font>
+                  <Font name="Century Gothic" size="18.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutY="65.0" prefHeight="400.0" prefWidth="250.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Feed" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Explore" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Trending TAGS" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Top Posts" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Notifications" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Profile" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Sign Out" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Label layoutX="265.0" layoutY="24.0" text="Top Posts" textFill="#98a0a6">
+         <font>
+            <Font name="Century Gothic Bold" size="15.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER_LEFT" layoutX="986.0" layoutY="16.0" prefHeight="35.0" prefWidth="250.0" styleClass="search_tf">
+         <effect>
+            <DropShadow color="#eee2e2" />
+         </effect>
+         <children>
+               
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Search" style="-fx-background-color: transparent;" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="265.0" layoutY="95.0" prefHeight="240.0" prefWidth="740.0">
+         <children>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-01.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="247" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="280.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-02.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="162" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox layoutX="380.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-03.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="11k" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="265.0" layoutY="346.0" prefHeight="240.0" prefWidth="740.0">
+         <children>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-04.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="199" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="280.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-05.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="343" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                      
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox layoutX="380.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow color="#dad3d3" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="180.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../pics/image-06.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #F1F5F8; -fx-background-radius: 100px;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../pics/avatar.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label text="4 hrs ago" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="33.0" text="210" textFill="#98a0a6">
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                       
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -25,8 +25,11 @@ public class CrudPI extends Application {
     @Override
     public void start(Stage stage) {
         try {
+//                        Parent root = FXMLLoader.load(getClass().getResource("Client.fxml"));
+
             Parent root = FXMLLoader.load(getClass().getResource("CrudEvent.fxml"));
-            
+//            Parent root = FXMLLoader.load(getClass().getResource("GestionRéservationClientEvent.fxml"));
+
             Scene scene = new Scene(root);
             
             stage.setScene(scene);
@@ -36,7 +39,7 @@ public class CrudPI extends Application {
         }
         
     }
-
+    
     public static void main(String[] args) {
         launch(args);
     }
