@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Panier {
     
     private int ID_Panier;
-    private int ID_Commande;
+    private int ID_User;
     private LocalDate Date_C;
     private LocalDate Date_U;
     private String Status_panier;
@@ -22,9 +22,9 @@ public class Panier {
     public Panier() {
     }
 
-    public Panier(int ID_Panier, int ID_Commande, LocalDate Date_C, LocalDate Date_U, String Status_panier) {
+    public Panier(int ID_Panier, int ID_User, LocalDate Date_C, LocalDate Date_U, String Status_panier) {
         this.ID_Panier = ID_Panier;
-        this.ID_Commande = ID_Commande;
+        this.ID_User = ID_User;
         this.Date_C = Date_C;
         this.Date_U = Date_U;
         this.Status_panier = Status_panier;
@@ -38,12 +38,12 @@ public class Panier {
         this.ID_Panier = ID_Panier;
     }
 
-    public int getID_Commande() {
-        return ID_Commande;
+    public int getID_User() {
+        return ID_User;
     }
 
-    public void setID_Commande(int ID_Commande) {
-        this.ID_Commande = ID_Commande;
+    public void setID_User(int ID_User) {
+        this.ID_User = ID_User;
     }
 
     public LocalDate getDate_C() {
@@ -72,8 +72,10 @@ public class Panier {
 
     @Override
     public String toString() {
-        return "Panier{" + "ID_Panier=" + ID_Panier + ", ID_Commande=" + ID_Commande + ", Date_C=" + Date_C + ", Date_U=" + Date_U + ", Status_panier=" + Status_panier + "}\n";
+        return "Panier{" + "ID_Panier=" + ID_Panier + ", ID_User=" + ID_User + ", Date_C=" + Date_C + ", Date_U=" + Date_U + ", Status_panier=" + Status_panier + "}\n";
     }
+
+    
     
     
     

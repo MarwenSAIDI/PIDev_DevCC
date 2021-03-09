@@ -13,21 +13,21 @@ public class Commande {
     
     private int ID_Commande;
     private int ID_Produit;
-    private int ID_Payment;
+    private int ID_Panier;
     private int Quantitee;
     private double prix;
-    private String Status_commande;
+    
 
     public Commande() {
     }
 
-    public Commande(int ID_Commande, int ID_Produit, int ID_Payment, int Quantitee, double prix, String Status_commande) {
+    public Commande(int ID_Commande, int ID_Produit, int ID_Panier, int Quantitee, double prix) {
         this.ID_Commande = ID_Commande;
         this.ID_Produit = ID_Produit;
-        this.ID_Payment = ID_Payment;
+        this.ID_Panier = ID_Panier;
         this.Quantitee = Quantitee;
         this.prix = prix;
-        this.Status_commande = Status_commande;
+        
     }
 
     public int getID_Commande() {
@@ -46,12 +46,12 @@ public class Commande {
         this.ID_Produit = ID_Produit;
     }
 
-    public int getID_Payment() {
-        return ID_Payment;
+    public int getID_Panier() {
+        return ID_Panier;
     }
 
-    public void setID_Payment(int ID_Payment) {
-        this.ID_Payment = ID_Payment;
+    public void setID_Panier(int ID_Panier) {
+        this.ID_Panier = ID_Panier;
     }
 
     public int getQuantitee() {
@@ -70,17 +70,10 @@ public class Commande {
         this.prix = prix;
     }
 
-    public String getStatus_commande() {
-        return Status_commande;
-    }
-
-    public void setStatus_commande(String Status_commande) {
-        this.Status_commande = Status_commande;
-    }
-
+    
     @Override
     public String toString() {
-        return "Commande{" + "ID_Commande=" + ID_Commande + ", ID_Produit=" + ID_Produit + ", ID_Payment=" + ID_Payment + ", Quantitee=" + Quantitee + ", prix=" + prix + ", Status_commande=" + Status_commande + "}\n";
+        return "Commande{" + "ID_Commande=" + ID_Commande + ", ID_Produit=" + ID_Produit + ", ID_Panier=" + ID_Panier + ", Quantitee=" + Quantitee + ", prix=" + prix + "}\n";
     }
     
     
