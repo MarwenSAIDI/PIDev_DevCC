@@ -22,13 +22,16 @@ public class Evenement {
     private String description;
     private Date date_event; 
     private String image;
-
+    private float tarif;
+    
+    private int capacite;
+    private int nb_reservation;
+    private String etat;
     
     public Evenement() {
     }
 
-
-    public Evenement(int id, int id_organisateur, String type, String titre, String lieu, String description, Date date_event, String image) {
+    public Evenement(int id, int id_organisateur, String type, String titre, String lieu, String description, Date date_event, String image, float tarif, int capacite, int nb_reservation, String etat) {
         this.id = id;
         this.id_organisateur = id_organisateur;
         this.type = type;
@@ -37,6 +40,20 @@ public class Evenement {
         this.description = description;
         this.date_event = date_event;
         this.image = image;
+        this.tarif = tarif;
+        this.capacite = capacite;
+        this.nb_reservation = nb_reservation;
+        this.etat = etat;
+    }
+
+
+
+    public float getTarif() {
+        return tarif;
+    }
+
+    public void setTarif(float tarif) {
+        this.tarif = tarif;
     }
 
     
@@ -105,9 +122,33 @@ public class Evenement {
         this.image = image;
     }
 
+    public int getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
+    }
+
+    public int getNb_reservation() {
+        return nb_reservation;
+    }
+
+    public void setNb_reservation(int nb_reservation) {
+        this.nb_reservation = nb_reservation;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         hash = 29 * hash + this.id;
         hash = 29 * hash + this.id_organisateur;
         hash = 29 * hash + Objects.hashCode(this.type);
@@ -116,6 +157,10 @@ public class Evenement {
         hash = 29 * hash + Objects.hashCode(this.description);
         hash = 29 * hash + Objects.hashCode(this.date_event);
         hash = 29 * hash + Objects.hashCode(this.image);
+        hash = 29 * hash + Float.floatToIntBits(this.tarif);
+        hash = 29 * hash + this.capacite;
+        hash = 29 * hash + this.nb_reservation;
+        hash = 29 * hash + Objects.hashCode(this.etat);
         return hash;
     }
 
@@ -137,6 +182,15 @@ public class Evenement {
         if (this.id_organisateur != other.id_organisateur) {
             return false;
         }
+        if (Float.floatToIntBits(this.tarif) != Float.floatToIntBits(other.tarif)) {
+            return false;
+        }
+        if (this.capacite != other.capacite) {
+            return false;
+        }
+        if (this.nb_reservation != other.nb_reservation) {
+            return false;
+        }
         if (!Objects.equals(this.type, other.type)) {
             return false;
         }
@@ -152,6 +206,9 @@ public class Evenement {
         if (!Objects.equals(this.image, other.image)) {
             return false;
         }
+        if (!Objects.equals(this.etat, other.etat)) {
+            return false;
+        }
         if (!Objects.equals(this.date_event, other.date_event)) {
             return false;
         }
@@ -160,8 +217,9 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", id_organisateur=" + id_organisateur + ", type=" + type + ", titre=" + titre + ", lieu=" + lieu + ", description=" + description + ", date_event=" + date_event + ", image=" + image + '}';
+        return "Evenement{" + "id=" + id + ", id_organisateur=" + id_organisateur + ", type=" + type + ", titre=" + titre + ", lieu=" + lieu + ", description=" + description + ", date_event=" + date_event + ", image=" + image + ", tarif=" + tarif + ", capacite=" + capacite + ", nb_reservation=" + nb_reservation + ", etat=" + etat + '}';
     }
+
 
     public void setImage(ImageView emp0photo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
