@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package pidev.services;
+import java.lang.NumberFormatException;
 
 /**
  *
@@ -21,6 +22,37 @@ public class TextFieldException extends Exception {
     public static void verifEmpty(String text) throws TextFieldException{
         if(text == null || text.trim().isEmpty()){
             throw new TextFieldException("Empty field found !");
+        }
+    }
+    
+    public static void verifInt(String text) throws TextFieldException{
+        
+        try{
+            Integer.parseInt(text);
+        }catch(NumberFormatException ex)
+        {
+            
+            throw new TextFieldException("No integer allowed");
+        }
+    }
+    public static void verifDouble(String text) throws TextFieldException{
+        
+        try{
+            Double.parseDouble(text);
+        }catch(NumberFormatException ex)
+        {
+            
+            throw new TextFieldException("No double allowed");
+        }
+    }
+    
+    
+    
+    
+    public static void verifString(String text) throws TextFieldException{
+        String clean = text.replaceAll("\\D+","");
+        if(!clean.trim().isEmpty()){
+            throw new TextFieldException("No integer allowed !");
         }
     }
     

@@ -32,10 +32,10 @@ public class PanierCRUD {
     }
     
     public void Ajouter(Panier pan){
-        String sql = "INSERT INTO paniers (ID_Commande, Date_C, Status_Panier) VALUES( ?, ?, ?)";
+        String sql = "INSERT INTO paniers (ID_User, Date_C, Status_Panier) VALUES( ?, ?, ?)";
         try {
             ste = cnx.prepareStatement(sql);
-            ste.setInt(1, pan.getID_Commande());
+            ste.setInt(1, pan.getID_User());
             ste.setObject(2, pan.getDate_C());
             ste.setString(3, pan.getStatus_panier());
             ste.executeUpdate();
@@ -48,7 +48,7 @@ public class PanierCRUD {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("L'ID de la commande n'exist pas !");
+            alert.setContentText("L'ID de l'utilisateur n'exist pas !");
 
             alert.showAndWait();
         }
@@ -65,7 +65,7 @@ public class PanierCRUD {
         while(result.next()){
             Panier p = new Panier();
             p.setID_Panier(result.getInt("ID_Panier"));
-            p.setID_Commande(result.getInt("ID_Commande"));
+            p.setID_User(result.getInt("ID_User"));
             p.setDate_C(result.getDate("Date_C").toLocalDate());
             p.setDate_U(result.getDate("Date_U").toLocalDate());
             p.setStatus_panier(result.getString("Status_panier"));
@@ -81,13 +81,12 @@ public class PanierCRUD {
     
     public void Modifier(Panier pan){
       
-        String sql = "UPDATE paniers SET ID_Commande = ?, Date_C = ?, Status_Panier = ? WHERE ID_Panier = ?";
+        String sql = "UPDATE paniers SET ID_User = ?, Status_Panier = ? WHERE ID_Panier = ?";
         try {
             ste = cnx.prepareStatement(sql);
-            ste.setInt(1, pan.getID_Commande());
-            ste.setObject(2, pan.getDate_C());
-            ste.setString(3, pan.getStatus_panier());
-            ste.setInt(4, pan.getID_Panier());
+            ste.setInt(1, pan.getID_User());
+            ste.setString(2, pan.getStatus_panier());
+            ste.setInt(3, pan.getID_Panier());
             ste.executeUpdate();
             System.out.println("Panier Modifier");
             
@@ -113,5 +112,71 @@ public class PanierCRUD {
             System.out.println("Probléme");
             System.out.println(ex.getMessage());
         }
+    }
+    
+    
+    public List<Panier> verifPanier(int ID_user) throws SQLException{
+        String query = "SELECT * FROM paniers WHERE ID_User = ? AND Status_panier LIKE 'En cours'";
+        List<Panier> paniers = new ArrayList<>();
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setInt(1, ID_user);
+            
+            ResultSet result = ste.executeQuery();
+            
+            
+            while(result.next()){
+                Panier p = new Panier();
+                p.setID_Panier(result.getInt("ID_Panier"));
+                p.setID_User(result.getInt("ID_User"));
+                p.setDate_C(result.getDate("Date_C").toLocalDate());
+                p.setDate_U(result.getDate("Date_U").toLocalDate());
+                p.setStatus_panier(result.getString("Status_panier"));
+
+
+                paniers.add(p);
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Probléme");
+            System.out.println(ex.getMessage());
+        }
+        
+        return paniers;    
+   
+    }
+    
+    
+    public List<Panier> getPanier(int ID_user) throws SQLException{
+        String query = "SELECT * FROM paniers WHERE ID_User = ? AND Status_panier LIKE 'En cours'";
+        List<Panier> paniers = new ArrayList<>();
+        try {
+            ste = cnx.prepareStatement(query);
+            ste.setInt(1, ID_user);
+            
+            ResultSet result = ste.executeQuery();
+            
+            
+            while(result.next()){
+                Panier p = new Panier();
+                p.setID_Panier(result.getInt("ID_Panier"));
+                p.setID_User(result.getInt("ID_User"));
+                p.setDate_C(result.getDate("Date_C").toLocalDate());
+                p.setDate_U(result.getDate("Date_U").toLocalDate());
+                p.setStatus_panier(result.getString("Status_panier"));
+
+
+                paniers.add(p);
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Probléme");
+            System.out.println(ex.getMessage());
+        }
+        
+        return paniers;    
+   
     }
 }
