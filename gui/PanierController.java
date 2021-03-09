@@ -43,15 +43,13 @@ import pidev.services.TextFieldException;
  */
 public class PanierController implements Initializable {
 
-    @FXML
-    private DatePicker t_date;
+    
     @FXML
     private TextField t_id;
     @FXML
     private ComboBox<String> cb_status;
     @FXML
     private TableView<Panier> tab_panier;
-    @FXML
     private Button ret;
     
     private int ID;
@@ -62,8 +60,8 @@ public class PanierController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        cb_status.getItems().addAll("En cours", "Créer","Abondonner");
-        cb_status.getSelectionModel().select("Créer");
+        cb_status.getItems().addAll("En cours","Abondonner","Payer","Livrer");
+        cb_status.getSelectionModel().select("En cours");
         
         try{
             PanierCRUD panc = new PanierCRUD();
@@ -75,10 +73,10 @@ public class PanierController implements Initializable {
             id_p.setCellValueFactory(
                     new PropertyValueFactory<>("ID_Panier"));
 
-            TableColumn<Panier,String> id_com = new TableColumn("ID Commande");
+            TableColumn<Panier,String> id_usr = new TableColumn("ID User");
 
-            id_com.setCellValueFactory(
-                    new PropertyValueFactory<>("ID_Commande"));
+            id_usr.setCellValueFactory(
+                    new PropertyValueFactory<>("ID_User"));
 
             TableColumn<Panier,String> d_c = new TableColumn("Date de creation");
 
@@ -96,7 +94,7 @@ public class PanierController implements Initializable {
                     new PropertyValueFactory<>("Status_panier"));
 
             tab_panier.getColumns().add(id_p);
-            tab_panier.getColumns().add(id_com);
+            tab_panier.getColumns().add(id_usr);
             tab_panier.getColumns().add(d_c);
             tab_panier.getColumns().add(d_u);
             tab_panier.getColumns().add(s_p);
@@ -131,24 +129,22 @@ public class PanierController implements Initializable {
         
     }    
 
-    @FXML
     private void AjouterPanier(ActionEvent event) {
         
         try{
             
             TextFieldException.verifEmpty(t_id.getText());
-            int id_com = Integer.parseInt(t_id.getText());
+            int id_usr = Integer.parseInt(t_id.getText());
             
             
-            TextFieldException.verifEmpty(t_date.getValue().toString());
-            LocalDate date = t_date.getValue();
+            
 
             TextFieldException.verifEmpty(cb_status.getValue());
             String status = cb_status.getValue();
 
             Panier pan = new Panier();
-            pan.setID_Commande(id_com);
-            pan.setDate_C(date);
+            pan.setID_User(id_usr);
+            
             pan.setStatus_panier(status);
 
             PanierCRUD panc = new PanierCRUD();
@@ -170,7 +166,6 @@ public class PanierController implements Initializable {
         
     }
 
-    @FXML
     private void Retour(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
         Parent root = loader.load();
@@ -183,8 +178,8 @@ public class PanierController implements Initializable {
         Panier panierM_S =  tab_panier.getSelectionModel().selectedItemProperty().get();
         
         ID = panierM_S.getID_Panier();
-        t_id.setText(String.valueOf(panierM_S.getID_Commande()));
-        t_date.setValue(panierM_S.getDate_C());
+        t_id.setText(String.valueOf(panierM_S.getID_User()));
+        
         cb_status.getSelectionModel().select(panierM_S.getStatus_panier());
         
         
@@ -195,19 +190,18 @@ public class PanierController implements Initializable {
         
         try{
             TextFieldException.verifEmpty(t_id.getText());
-            int id_com = Integer.parseInt(t_id.getText());
+            int id_usr = Integer.parseInt(t_id.getText());
             
             
-            TextFieldException.verifEmpty(t_date.getValue().toString());
-            LocalDate date = t_date.getValue();
+            
 
             TextFieldException.verifEmpty(cb_status.getValue());
             String status = cb_status.getValue();
 
             Panier pan = new Panier();
             pan.setID_Panier(ID);
-            pan.setID_Commande(id_com);
-            pan.setDate_C(date);
+            pan.setID_User(id_usr);
+            
             pan.setStatus_panier(status);
 
             PanierCRUD panc = new PanierCRUD();

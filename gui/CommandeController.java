@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -48,6 +49,8 @@ public class CommandeController implements Initializable {
     private Button ret;
     
     private int ID;
+    @FXML
+    private ComboBox<String> cb_sc;
     
   
 
@@ -58,6 +61,10 @@ public class CommandeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         try{
+            
+            cb_sc.getItems().addAll("Créer", "Payer","Livrer","Complete");
+            cb_sc.getSelectionModel().select("Créer");
+        
             CommandeCRUD comc = new CommandeCRUD();
 
             tab_C.setEditable(true);
@@ -73,10 +80,10 @@ public class CommandeController implements Initializable {
             id_p.setCellValueFactory(
                     new PropertyValueFactory<>("ID_Produit"));
 
-            TableColumn<Commande,String> id_pay = new TableColumn("ID Payment");
+            TableColumn<Commande,String> id_pan = new TableColumn("ID Panier");
 
-            id_pay.setCellValueFactory(
-                    new PropertyValueFactory<>("ID_Payment"));
+            id_pan.setCellValueFactory(
+                    new PropertyValueFactory<>("ID_Panier"));
 
 
 
@@ -97,7 +104,7 @@ public class CommandeController implements Initializable {
 
             tab_C.getColumns().add(id_com);
             tab_C.getColumns().add(id_p);
-            tab_C.getColumns().add(id_pay);
+            tab_C.getColumns().add(id_pan);
             tab_C.getColumns().add(quant);
             tab_C.getColumns().add(prix);
             tab_C.getColumns().add(s_c);
@@ -144,15 +151,19 @@ public class CommandeController implements Initializable {
             int id_p = Integer.parseInt(t_prod.getText());
             
             TextFieldException.verifEmpty(t_pay.getText());
-            int pay = Integer.parseInt(t_pay.getText());
+            int pan = Integer.parseInt(t_pay.getText());
             
             TextFieldException.verifEmpty(t_quant.getText());
             int quant = Integer.parseInt(t_quant.getText());
+            
+            TextFieldException.verifEmpty(cb_sc.getValue());
+            String statusC = cb_sc.getValue();
 
             Commande com = new Commande();
             com.setID_Produit(id_p);
-            com.setID_Payment(pay);
+            com.setID_Panier(pan);
             com.setQuantitee(quant);
+            
             CommandeCRUD comc = new CommandeCRUD();
             comc.Ajouter(com);
 
@@ -178,7 +189,7 @@ public class CommandeController implements Initializable {
         
         ID = commandeM_S.getID_Commande();
         t_prod.setText(String.valueOf(commandeM_S.getID_Produit()));
-        t_pay.setText(String.valueOf(commandeM_S.getID_Payment()));
+        t_pay.setText(String.valueOf(commandeM_S.getID_Panier()));
         t_quant.setText(String.valueOf(commandeM_S.getQuantitee()));
         
         
@@ -192,16 +203,18 @@ public class CommandeController implements Initializable {
             int id_p = Integer.parseInt(t_prod.getText());
             
             TextFieldException.verifEmpty(t_pay.getText());
-            int pay = Integer.parseInt(t_pay.getText());
+            int pan = Integer.parseInt(t_pay.getText());
             
             TextFieldException.verifEmpty(t_quant.getText());
             int quant = Integer.parseInt(t_quant.getText());
+            
 
             Commande com = new Commande();
             com.setID_Commande(ID);
             com.setID_Produit(id_p);
-            com.setID_Payment(pay);
+            com.setID_Panier(pan);
             com.setQuantitee(quant);
+            
             CommandeCRUD comc = new CommandeCRUD();
             comc.Modifier(com);
 

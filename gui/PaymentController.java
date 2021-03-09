@@ -49,13 +49,12 @@ public class PaymentController implements Initializable {
     @FXML
     private ComboBox<String> cb_mp;
     @FXML
-    private TextField t_Com;
-    @FXML
     private TableView<Payment> tab_pay;
-    @FXML
     private Button ret;
     
     private int ID;
+    @FXML
+    private TextField t_Pan;
 
     /**
      * Initializes the controller class.
@@ -76,6 +75,11 @@ public class PaymentController implements Initializable {
 
             id_p.setCellValueFactory(
                     new PropertyValueFactory<>("ID_Payment"));
+            
+            TableColumn<Payment,String> id_pan = new TableColumn("ID Panier");
+
+            id_pan.setCellValueFactory(
+                    new PropertyValueFactory<>("ID_Panier"));
 
             TableColumn<Payment,String> p_f = new TableColumn("Prix Totale");
 
@@ -88,6 +92,7 @@ public class PaymentController implements Initializable {
                     new PropertyValueFactory<>("Mode_Payment"));
 
             tab_pay.getColumns().add(id_p);
+            tab_pay.getColumns().add(id_pan);
             tab_pay.getColumns().add(p_f);
             tab_pay.getColumns().add(m_p);
 
@@ -118,7 +123,6 @@ public class PaymentController implements Initializable {
        
     }    
 
-    @FXML
     private void AjouterPayment(ActionEvent event) {
         
             
@@ -127,7 +131,7 @@ public class PaymentController implements Initializable {
             Double pf = Double.parseDouble(t_pf.getText());
             TextFieldException.verifEmpty(cb_mp.getValue());
             String mp = cb_mp.getValue();
-            Payment pay = new Payment(22,pf,mp);
+            Payment pay = new Payment(22,0,pf,mp);
             PaymentCRUD payc = new PaymentCRUD();
             payc.Ajouter(pay);
             
@@ -157,7 +161,6 @@ public class PaymentController implements Initializable {
 
     
 
-    @FXML
     private void Retour(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
         Parent root = loader.load();
@@ -184,7 +187,10 @@ public class PaymentController implements Initializable {
             TextFieldException.verifEmpty(cb_mp.getValue());
             String mp = cb_mp.getValue();
 
-            Payment pay = new Payment(ID,pf,mp);
+            Payment pay = new Payment();
+            pay.setID_Payment(ID);
+            pay.setPrix_F(pf);
+            pay.setMode_Payment(mp);
             PaymentCRUD payc = new PaymentCRUD();
             payc.Modifier(pay);
 
@@ -209,6 +215,7 @@ public class PaymentController implements Initializable {
     @FXML
     private void SupprimerPayment(ActionEvent event) {
         PaymentCRUD payc = new PaymentCRUD();
+        
         payc.Supprimer(ID);
 
  
@@ -222,9 +229,6 @@ public class PaymentController implements Initializable {
         }
     }
 
-    @FXML
-    private void SelectionnerCommande(ActionEvent event) {
-    }
 
     
 

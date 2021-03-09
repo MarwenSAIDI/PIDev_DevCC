@@ -17,7 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import pidev.entities.Utilisateur;
 
 /**
  * FXML Controller class
@@ -32,6 +34,9 @@ public class CRUDController implements Initializable {
     private Button b_Commande;
     @FXML
     private Button b_pay;
+    private Utilisateur user;
+    @FXML
+    private Label user_L;
 
     /**
      * Initializes the controller class.
@@ -40,6 +45,7 @@ public class CRUDController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
         
     }    
 
