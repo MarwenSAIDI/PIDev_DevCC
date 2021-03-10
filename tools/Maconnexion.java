@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author aymen romdhani
  */
 public class Maconnexion {
-    final static String URL ="jdbc:mysql://localhost:3306/crudproduit";
+    final static String URL ="jdbc:mysql://localhost:3306/crud";
    final static String LOGIN ="root";
    final static String PWD ="";
    static Maconnexion instance =null ;
