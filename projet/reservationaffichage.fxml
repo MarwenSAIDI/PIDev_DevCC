@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="905.0" prefWidth="945.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.ReservationaffichageController">
+    <stylesheets>
+        <URL value="@reservationaffichage.css" />
+      <URL value="@Clientinterface.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="919.0" prefWidth="260.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1516.0" AnchorPane.topAnchor="-1.0">
+         <effect>
+            <DropShadow color="#ddd8d8" />
+         </effect>
+         <children>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="HOME" layoutX="66.0" layoutY="49.0" size="2em" />
+            <Label layoutX="96.0" layoutY="29.0" text="Interface Client" textFill="#98a0a6">
+               <font>
+                  <Font name="Century Gothic" size="18.0" />
+               </font>
+            </Label>
+            <VBox alignment="CENTER" layoutY="65.0" prefHeight="400.0" prefWidth="250.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Explore" textFill="#98a0a6">
+                     <graphic>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="SEARCH" size="1.5em" />
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="PageRDV" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#revenirpageaffichconsult" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Prendre Rendez-vous" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Top Posts" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Notifications" textFill="#98a0a6">
+                     <graphic>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="BELL" size="1.5em" />
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Profile" textFill="#98a0a6">
+                     <graphic>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="USER" size="1.5em" />
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Sign Out" textFill="#98a0a6">
+                     <graphic>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="LOCK" size="1.5em" />
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="703.0" prefHeight="40.0" prefWidth="80.0" styleClass="lblIcon">
+               <graphic>
+                  <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="GEAR" size="1.5em" />
+               </graphic>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="140.0" layoutY="703.0" prefHeight="40.0" prefWidth="80.0" styleClass="lblIcon">
+               <graphic>
+                  <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="USERS" size="1.5em" />
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" layoutX="679.0" layoutY="34.0" prefHeight="35.0" prefWidth="250.0" styleClass="search_tf">
+         <effect>
+            <DropShadow color="#eee2e2" />
+         </effect>
+         <children>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#F1F5F8" iconName="SEARCH" size="1.5em">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Search" style="-fx-background-color: transparent;" />
+         </children>
+      </HBox>
+      <Label layoutX="1056.0" layoutY="119.0" prefHeight="21.0" prefWidth="469.0" style="-fx-font-size: 23;" text="Vos listes des Reservations effectué" />
+      <HBox layoutX="987.0" layoutY="36.0" prefHeight="34.0" prefWidth="66.0" />
+      <Button fx:id="retid" layoutX="1010.0" layoutY="39.0" mnemonicParsing="false" onAction="#test2ret" text="retour" />
+      <ScrollPane fx:id="scroll" layoutX="709.0" layoutY="160.0" prefHeight="758.0" prefWidth="1067.0" styleClass="transparent">
+         <content>
+            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <VBox fx:id="vboox" alignment="CENTER" layoutX="330.0" layoutY="193.0" prefHeight="692.0" prefWidth="347.0" stylesheets="@style.css">
+         <children>
+            <Label fx:id="TitreLable" prefHeight="144.0" prefWidth="327.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="typelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="datelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="heurelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="consImg" fitHeight="173.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+               <children>
+                  <Button fx:id="supp" mnemonicParsing="false" onAction="#suppaction" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Supprimer RDV" textFill="#828282">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="prRdv" mnemonicParsing="false" onAction="#rdvaction" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Modifier RDV" textFill="#828282">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="chosen-fruit-card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </VBox>
+      <ImageView fx:id="reservbtn" fitHeight="30.0" fitWidth="22.0" layoutX="417.0" layoutY="32.0" onMouseClicked="#reservbutton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/notif.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="nbreservations" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="37.0" styleClass="round_lbl" text="8" />
+      <Label fx:id="nbreservations1" alignment="CENTER" contentDisplay="CENTER" layoutX="494.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="37.0" styleClass="round_lbl2" text="8" />
+      <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="BELL" layoutX="646.0" layoutY="49.0" onMouseClicked="#notif" size="1.5em" />
+   </children>
+</AnchorPane>

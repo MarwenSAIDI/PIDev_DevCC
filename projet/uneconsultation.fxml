@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMousePressed="#click" prefHeight="299.0" prefWidth="412.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.UneconsultationController">
+    <stylesheets>
+        <URL value="@uneconsultation.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="titre" layoutX="14.0" layoutY="14.0" prefHeight="39.0" prefWidth="524.0" text="Titre" textFill="#1500ff">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="descr" layoutX="188.0" layoutY="57.0" prefHeight="63.0" prefWidth="353.0" text="description">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="emplac" layoutX="188.0" layoutY="124.0" prefHeight="39.0" prefWidth="346.0" text="Emplacement">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="prx" layoutX="192.0" layoutY="169.0" prefHeight="27.0" prefWidth="181.0" text="Prix">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <ImageView fx:id="img" fitHeight="142.0" fitWidth="181.0" layoutX="7.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
