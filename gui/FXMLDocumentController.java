@@ -7,6 +7,7 @@ package crudvfinal;
 
 import crudvfinal.entities.Therapeute;
 import crudvfinal.services.Therapeuteservice;
+import crudvfinal.services.UserSession;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -23,12 +24,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 
 /**
@@ -48,8 +51,7 @@ public class FXMLDocumentController implements Initializable {
     private TextField textprenom;
     @FXML
     private TextField textadresse;
-    @FXML
-    private TextField textpassword;
+    
     @FXML
     private Button btninscr;
     @FXML
@@ -87,12 +89,23 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label pwdlabel;
     @FXML
-    private Button btnimporter;
+    private PasswordField textpassword;
+    @FXML
+    private Label retour;
+    @FXML
+    private Pane textacc;
+    @FXML
+    private Label textth;
+    @FXML
+    private Label textclient;
+    @FXML
+    private Label labelemail;
     
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Therapeuteservice cs = new Therapeuteservice();
 
          List<Therapeute> lc = cs.ListEntite();
@@ -132,9 +145,6 @@ public class FXMLDocumentController implements Initializable {
         
     }   
 
-    @FXML
-    private void modifierchamps(InputMethodEvent event) {
-    }
 
     @FXML
     private void ajouteruser(ActionEvent event)
@@ -168,7 +178,7 @@ public class FXMLDocumentController implements Initializable {
        else{          int a= Integer.parseInt(textcin.getText());
 
          int b=Integer.parseInt(textnum.getText());
-     Therapeute e=new Therapeute(b,textadresse.getText(),textimage.getText(),a,textemail.getText(),textnom.getText(),textprenom.getText(),textpassword.getText());
+     Therapeute e=new Therapeute(b,textadresse.getText(),textimage.getText(),a,textemail.getText(),textnom.getText(),textprenom.getText(),Therapeuteservice.getMd5(textpassword.getText()));
 Therapeuteservice s=new Therapeuteservice();
 s.addTherapeute(e);
 Therapeuteservice cs = new Therapeuteservice();
@@ -289,6 +299,29 @@ Therapeuteservice cs = new Therapeuteservice();
             }else
             textimage.setText(selected.getAbsolutePath());
         }
+    }
+
+    @FXML
+    private void retour(MouseEvent event) throws IOException { 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            retour.getScene().setRoot(root);
+        
+    }
+
+    @FXML
+    private void gotoacceuil(MouseEvent event) {
+    }
+
+    @FXML
+    private void gototherapeutes(MouseEvent event) {
+    }
+
+    @FXML
+    private void gotoclient(MouseEvent event) throws IOException {
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gestionclient.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            textclient.getScene().setRoot(root);
     }
 
     

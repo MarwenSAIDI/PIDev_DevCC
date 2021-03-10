@@ -1,11 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudvfinal.RecommandationController">
-    
+<AnchorPane id="AnchorPane" layoutX="800.0" layoutY="650.0" prefHeight="40.0" prefWidth="8.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudvfinal.RecommandationController">
+   <children>
+      <AnchorPane layoutX="-800.0" layoutY="-650.0" prefHeight="689.0" prefWidth="246.0" styleClass="sidebar">
+         <children>
+            <Pane fx:id="retour" layoutX="30.0" layoutY="37.0" onMouseClicked="#retour" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn" stylesheets="@stylesheet.css">
+               <children>
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="6.0" text="Gestion des modules" textFill="#2262c6">
+                     <font>
+                        <Font name="Berlin Sans FB" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="122.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="textrecom" onMouseClicked="#gotoGestionreco" prefHeight="18.0" prefWidth="166.0" text="Gestions des Recommandations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="154.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion des Reservations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="185.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestion des evenements" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="215.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Gestions des consultations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="246.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="276.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="32.0" layoutY="307.0" prefHeight="30.0" prefWidth="180.0" styleClass="sidebar-btn-text">
+               <children>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_star_50px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <Label alignment="CENTER" layoutX="32.0" layoutY="361.0" text="Strorage Details" textFill="#a2bee8">
+               <font>
+                  <Font name="Berlin Sans FB" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="-517.0" layoutY="-596.0" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="-19.0" layoutY="-627.0" opacity="0.5" prefHeight="30.0" prefWidth="222.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;" text="Search Drive">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="229.0" layoutY="-621.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8_bell_24px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="254.0" layoutY="-621.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8_help_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="204.0" layoutY="-621.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/icons8_settings_26px.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelemail" layoutX="-215.0" layoutY="-600.0" prefHeight="35.0" prefWidth="246.0" textFill="#2262c6">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textid" layoutX="-532.0" layoutY="-544.0" promptText="id" />
+      <TextField fx:id="texttitre" layoutX="-532.0" layoutY="-493.0" promptText="titre" />
+      <TextField fx:id="textdescription" layoutX="-532.0" layoutY="-436.0" promptText="descption" />
+      <TextField fx:id="textecrivain" layoutX="-532.0" layoutY="-393.0" promptText="ecrivain" />
+      <TextField fx:id="textimage" layoutX="-532.0" layoutY="-347.0" onMouseClicked="#importimg" promptText="image" />
+      <TextField fx:id="texttype" layoutX="-532.0" layoutY="-297.0" promptText="type" />
+      <Button fx:id="btnajouter" layoutX="-532.0" layoutY="-236.0" mnemonicParsing="false" onMouseClicked="#ajouter" prefHeight="26.0" prefWidth="90.0" text="ajouter" />
+      <Button fx:id="btnmodifier" layoutX="-422.0" layoutY="-235.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="108.0" text="modifier" />
+      <Button fx:id="btnsupprimer" layoutX="-292.0" layoutY="-234.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="99.0" text="supprimer" />
+      <TableView fx:id="table" layoutX="-308.0" layoutY="-548.0" onMouseClicked="#afficherform" prefHeight="274.0" prefWidth="495.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="titre" prefWidth="75.0" text="titre" />
+            <TableColumn fx:id="description" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="ecrivain" prefWidth="75.0" text="ecrivain" />
+            <TableColumn fx:id="image" prefWidth="75.0" text="image" />
+            <TableColumn fx:id="type" prefWidth="75.0" text="type" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>

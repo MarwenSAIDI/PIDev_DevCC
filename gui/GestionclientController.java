@@ -9,13 +9,16 @@ import crudvfinal.entities.Therapeute;
 import crudvfinal.entities.client;
 import crudvfinal.services.Clientservice;
 import crudvfinal.services.Therapeuteservice;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -64,6 +68,16 @@ public class GestionclientController implements Initializable {
     private Label emaillabel;
     @FXML
     private Label pwdlabel;
+    @FXML
+    private Label retour;
+    @FXML
+    private TableColumn<client, String> etat;
+    @FXML
+    private Pane textacc;
+    @FXML
+    private Label textth;
+    @FXML
+    private Label textclient;
 
     /**
      * Initializes the controller class.
@@ -96,7 +110,8 @@ public class GestionclientController implements Initializable {
         
         password.setCellValueFactory(
                 new PropertyValueFactory<>("password"));
-      
+      etat.setCellValueFactory(
+                new PropertyValueFactory<>("etat"));
  
         table.setItems(data);
         
@@ -104,36 +119,9 @@ public class GestionclientController implements Initializable {
 
     @FXML
     private void modifier(MouseEvent event) {
-        Clientservice tt=new Clientservice();
-
-    
-        if ((textcin.getText().isEmpty())||(textemail.getText().isEmpty())||(textnom.getText().isEmpty())||(textprenom.getText().isEmpty())||
-                (textpassword.getText().isEmpty()))
-{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid data");
-            alert.setHeaderText("Cannot add a new entry");
-            alert.setContentText("un des champs est vide ");
-
-            alert.showAndWait();
-        } 
-
-        
-     else   if((textcin.getText().length()!=8)||(!tt.estUnEntier(textcin.getText())))
-           cinlabel.setText("le cin doit avoir8 chiffres");
-     
-     else if(!textemail.getText().contains("@zenlife.tn"))
-         emaillabel.setText("l adresse doit contenir @zenlife.tn");
-     else   if((textpassword.getText().length()<8))
-          pwdlabel.setText("le pwd doit avoir8 chiffres minimum");
-         
-        
-        
-       else{          int a= Integer.parseInt(textcin.getText());
-
-     client e=new client (a,textemail.getText(),textnom.getText(),textprenom.getText(),textpassword.getText());
+                 client t = table.getSelectionModel().getSelectedItem();         
 Clientservice s=new Clientservice();
-s.Updateclient(e);
+s.Updateinscritclient(t);
 Clientservice cs = new Clientservice();
 
          List<client> lc = cs.Listclient();
@@ -147,10 +135,8 @@ Clientservice cs = new Clientservice();
  
  
         table.setItems(data);
+          OublierController.send("zenlifezenlife02@gmail.com","zenlife123",textemail.getText(),"Compte Zenlife","felicitations vous etes inscrits a zenlife merci de nous rejoindre");             
 
-
-         
-    }
     
 }
         
@@ -161,7 +147,7 @@ Clientservice cs = new Clientservice();
     private void supprimer(MouseEvent event) {
         client t = table.getSelectionModel().getSelectedItem();         
 Clientservice s=new Clientservice();
-s.Deleteclient(t.getCin());
+s.Updatebannedclient(t);
 Clientservice cs = new Clientservice();
 
          List<client> lc = cs.Listclient();
@@ -189,6 +175,29 @@ Clientservice cs = new Clientservice();
         textpassword.setText(String.valueOf(t.getPassword()));
        
         
+    }
+
+    @FXML
+    private void retour(MouseEvent event) throws IOException {
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            retour.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gotohome(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void gotogestiontherapeutes(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            textth.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void gotoclient(MouseEvent event) {
     }
     
 }

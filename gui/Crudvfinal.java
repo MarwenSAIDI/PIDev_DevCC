@@ -20,9 +20,9 @@ public class Crudvfinal extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,1200,700);
         
         stage.setScene(scene);
         stage.show();}

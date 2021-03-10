@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudvfinal.OublierController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0">
+         <right>
+            <AnchorPane prefHeight="500.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="textemail" layoutX="108.0" layoutY="210.0" promptText="email" style="-fx-background-color: tranparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                  <FontAwesomeIcon fill="#2262c6" iconName="USER" layoutX="78.0" layoutY="230.0" size="20" />
+                  <Button fx:id="btnrecuperer" layoutX="123.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#recuperer" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #2262C6;" text="envoyer" textFill="WHITE" />
+                  <FontAwesomeIcon fill="#2262c6" iconName="USERS" layoutX="147.0" layoutY="78.0" size="35" text="" wrappingWidth="47.25716686248779" />
+                  <Text fill="#2262c6" layoutX="138.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="page recuperation" wrappingWidth="148.49029541015625">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="334.0" layoutY="2.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="2.0" style="-fx-background-color: TRANSPARENT;">
+                     <graphic>
+                        <FontAwesomeIcon fx:id="retour" fill="#2262c6" iconName="CLOSE" onMouseClicked="#retour" wrappingWidth="13.428571701049805" />
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="code" layoutX="108.0" layoutY="316.0" promptText="code recuperation" style="-fx-background-color: tranparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextField fx:id="password" layoutX="108.0" layoutY="367.0" promptText="nouveau password" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+                  <TextField fx:id="password1" layoutX="108.0" layoutY="411.0" promptText="resaisir password" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #0598ff;" />
+                  <Button fx:id="modifier" layoutX="126.0" layoutY="448.0" mnemonicParsing="false" onMouseClicked="#modifiermotdepasse" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #2262C6;" text="modifier" textFill="WHITE" />
+                  <Label fx:id="labelrondom" layoutX="272.0" layoutY="20.0" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="694.0" prefWidth="682.0" style="-fx-background-color: #2262C6;;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="162.0" fitWidth="358.0" layoutX="170.0" layoutY="167.0">
+                     <image>
+                        <Image url="@images/157487839_441027297148845_843060529929825188_n.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

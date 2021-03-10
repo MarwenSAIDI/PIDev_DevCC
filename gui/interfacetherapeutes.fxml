@@ -8,18 +8,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" layoutX="800.0" layoutY="650.0" prefHeight="40.0" prefWidth="286.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudvfinal.HomeController">
+<AnchorPane id="AnchorPane" layoutX="800.0" layoutY="650.0" prefHeight="40.0" prefWidth="8.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudvfinal.InterfacetherapeutesController">
    <children>
       <AnchorPane layoutX="-800.0" layoutY="-650.0" prefHeight="689.0" prefWidth="246.0" styleClass="sidebar">
          <children>
             <Pane layoutX="30.0" layoutY="37.0" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn" stylesheets="@stylesheet.css">
                <children>
-                  <Label alignment="CENTER" layoutX="41.0" layoutY="6.0" text="Gestion des modules" textFill="#2262c6">
+                  <Label fx:id="retour" alignment="CENTER" layoutX="41.0" layoutY="6.0" onMouseClicked="#retour" text="Gestion des modules" textFill="#2262c6">
                      <font>
                         <Font name="Berlin Sans FB" size="14.0" />
                      </font>
@@ -36,7 +35,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="textth" onMouseClicked="#gotoGestiontherapeutes" text="Gestions des therapeutes" textFill="#a2bee8">
+                  <Label fx:id="textrecom" onMouseClicked="#gotoGestionreco" prefHeight="18.0" prefWidth="166.0" text="Gestions des Recommandations" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -56,7 +55,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="textcmient" onMouseClicked="#gotoGestionclients" text="Gestion des clients" textFill="#a2bee8">
+                  <Label text="Gestion des Reservations" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -76,7 +75,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Gestion des produit" textFill="#a2bee8">
+                  <Label text="Gestion des evenements" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -96,7 +95,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label textFill="#a2bee8">
+                  <Label text="Gestions des consultations" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -173,7 +172,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="-517.0" layoutY="-596.0" text="Acceuil:Interface Admin:" textFill="#2262c6">
+      <Label alignment="CENTER" layoutX="-517.0" layoutY="-596.0" text="Acceuil:Interface Therapeutes:" textFill="#2262c6">
          <font>
             <Font name="Berlin Sans FB" size="24.0" />
          </font>
@@ -201,12 +200,11 @@
             <Image url="@images/icons8_settings_26px.png" />
          </image>
       </ImageView>
-      <Label fx:id="labelemail" layoutX="-268.0" layoutY="-600.0" prefHeight="35.0" prefWidth="311.0" textFill="#2262c6">
+      <Label fx:id="labelemail" layoutX="-215.0" layoutY="-600.0" prefHeight="35.0" prefWidth="246.0" textFill="#2262c6">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="deconnecter" layoutX="54.0" layoutY="-594.0" onMouseClicked="#deconnexion" text="se deconnecter" />
-      <BorderPane fx:id="pane" layoutX="-533.0" layoutY="-509.0" prefHeight="406.0" prefWidth="498.0" />
+      <Hyperlink fx:id="deconnecter" layoutX="45.0" layoutY="-594.0" onMouseClicked="#deconnexion" text="se deconnecter" />
    </children>
 </AnchorPane>

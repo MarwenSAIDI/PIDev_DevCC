@@ -21,25 +21,26 @@
       <TextField fx:id="textnom" layoutX="-526.0" layoutY="-650.0" promptText="nom" />
       <TextField fx:id="textprenom" layoutX="-526.0" layoutY="-604.0" promptText="prenom" />
       <TextField fx:id="textpassword" layoutX="-526.0" layoutY="-562.0" promptText="password" />
-      <Button fx:id="btnmodif" layoutX="-584.0" layoutY="-498.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="87.0" text="modifier" />
-      <Button fx:id="btnsupp" layoutX="-390.0" layoutY="-498.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="87.0" text="supprimer" />
-      <TableView fx:id="table" layoutX="-745.0" layoutY="-427.0" onMouseClicked="#afficerform" prefHeight="336.0" prefWidth="794.0">
+      <Button fx:id="btnmodif" layoutX="-584.0" layoutY="-498.0" mnemonicParsing="false" onMouseClicked="#modifier" prefHeight="26.0" prefWidth="87.0" text="confirm" />
+      <Button fx:id="btnsupp" layoutX="-390.0" layoutY="-498.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="87.0" text="ban" />
+      <TableView fx:id="table" layoutX="-745.0" layoutY="-427.0" onMouseClicked="#afficerform" prefHeight="336.0" prefWidth="904.0">
         <columns>
           <TableColumn fx:id="cin" prefWidth="140.0" text="cin" />
           <TableColumn fx:id="email" prefWidth="202.4000244140625" text="email" />
             <TableColumn fx:id="nom" prefWidth="132.79998779296875" text="nom" />
             <TableColumn fx:id="prenom" prefWidth="134.4000244140625" text="prenom" />
             <TableColumn fx:id="password" prefWidth="159.99993896484375" text="password" />
+            <TableColumn fx:id="etat" prefWidth="159.99993896484375" text="etat" />
         </columns>
       </TableView>
       <Label fx:id="cinlabel" layoutX="-242.0" layoutY="-738.0" prefHeight="18.0" prefWidth="302.0" />
       <Label fx:id="emaillabel" layoutX="-346.0" layoutY="-690.0" prefHeight="18.0" prefWidth="290.0" />
       <Label fx:id="pwdlabel" layoutX="-352.0" layoutY="-559.0" prefHeight="18.0" prefWidth="302.0" />
-      <AnchorPane layoutX="-1000.0" layoutY="-803.0" prefHeight="762.0" prefWidth="240.0" styleClass="sidebar">
+      <AnchorPane layoutX="-1000.0" layoutY="-803.0" prefHeight="830.0" prefWidth="240.0" styleClass="sidebar">
          <children>
-            <Pane layoutX="30.0" layoutY="37.0" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn">
+            <Pane fx:id="textacc" layoutX="30.0" layoutY="37.0" onMouseClicked="#gotohome" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn">
                <children>
-                  <Label alignment="CENTER" layoutX="41.0" layoutY="6.0" text="Gestion des modules" textFill="#2262c6">
+                  <Label fx:id="retour" alignment="CENTER" layoutX="41.0" layoutY="6.0" onMouseClicked="#retour" text="Gestion des modules" textFill="#2262c6">
                      <font>
                         <Font name="Berlin Sans FB" size="14.0" />
                      </font>
@@ -56,7 +57,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="My Drive" textFill="#a2bee8">
+                  <Label fx:id="textth" onMouseClicked="#gotogestiontherapeutes" text="Gestion des therapeutes" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -76,7 +77,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Computer" textFill="#a2bee8">
+                  <Label fx:id="textclient" onMouseClicked="#gotoclient" text="Gestion des clients" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -96,7 +97,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Shared with me" textFill="#a2bee8">
+                  <Label text="Gestion des produits" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -116,7 +117,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Recent" textFill="#a2bee8">
+                  <Label textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -136,7 +137,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Starred" textFill="#a2bee8">
+                  <Label textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -156,7 +157,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Trash" textFill="#a2bee8">
+                  <Label textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -176,7 +177,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Backups" textFill="#a2bee8">
+                  <Label textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
