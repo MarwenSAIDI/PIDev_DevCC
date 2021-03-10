@@ -75,19 +75,21 @@ public class Servicerecommandation {
         return  Mylist;
     }
 
-    public void Updatereco(client cl) {
+    public void Updatereco(Recommandation cl) {
         try {
-String requete = "UPDATE reco set id=?, tite = ?, description = ?, ecrivain = ?, ";
-requete += " image = ? ,type=? where cin =? ";            
+String requete = "UPDATE reco set id=?, titRe = ?, description = ?, ecrivain = ?, ";
+requete += " image = ? ,type=? where id =? ";            
 PreparedStatement pst = c.prepareStatement(requete);
-              pst.setInt(1, cl.getCin());
-            pst.setString(2, cl.getEmail());
+              pst.setString(1, cl.getId());
+            pst.setString(2, cl.getTitre());
 
-            pst.setString(3, cl.getNom());
-            pst.setString(4, cl.getPrenom());
-            pst.setString(5, cl.getPassword());
+            pst.setString(3, cl.getDescription());
+            pst.setString(4, cl.getEcrivain());
+            pst.setString(5, cl.getImage());
             
-              pst.setInt(6, cl.getCin());
+              pst.setString(6, cl.getType());
+                            pst.setString(7, cl.getId());
+
 
 
 
@@ -99,11 +101,11 @@ PreparedStatement pst = c.prepareStatement(requete);
 
     }
 
-    public void Deleteclient(int a) {
+    public void DeleteRECO(String a) {
         try {
-            String requete = "delete from user where ? = cin";
+            String requete = "delete from reco where ? = ID";
             PreparedStatement pst = c.prepareStatement(requete);
-            pst.setInt(1, a);
+            pst.setString(1, a);
             pst.executeUpdate();
             System.out.println("Classrooms Deleted !!!!");
         } catch (SQLException ex) {
@@ -121,8 +123,71 @@ PreparedStatement pst = c.prepareStatement(requete);
 		return true;
 	}
     
-    
-    
+     public List<Recommandation> Listrecoarticles() {
+        List<Recommandation> Mylist = new ArrayList<>();
+        try {
+            String requete = "select * from reco where type=?  ";
+            
+            PreparedStatement pst = c.prepareStatement(requete);
+                          pst.setString(1, "article");
+
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Recommandation p = new Recommandation();
+                p.setId(rs.getString("id"));
+                p.setTitre(rs.getString("titre"));
+                p.setDescription(rs.getString("description"));
+                p.setEcrivain(rs.getString("ecrivain"));
+                 p.setImage(rs.getString("image"));
+                 p.setType(rs.getString("type"));
+
+                 
+
+
+
+
+                Mylist.add(p);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return  Mylist;
+    }
+
+     public List<Recommandation> Listrecolivres() {
+        List<Recommandation> Mylist = new ArrayList<>();
+        try {
+            String requete = "select * from reco where type=?  ";
+            
+            PreparedStatement pst = c.prepareStatement(requete);
+                          pst.setString(1, "livre");
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Recommandation p = new Recommandation();
+                p.setId(rs.getString("id"));
+                p.setTitre(rs.getString("titre"));
+                p.setDescription(rs.getString("description"));
+                p.setEcrivain(rs.getString("ecrivain"));
+                 p.setImage(rs.getString("image"));
+                 p.setType(rs.getString("type"));
+
+                 
+
+
+
+
+                Mylist.add(p);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return  Mylist;
+    }
+
     
     
     
@@ -144,4 +209,4 @@ PreparedStatement pst = c.prepareStatement(requete);
     }
     
     
-}
+
