@@ -16,6 +16,7 @@ public class Recommandation {
      public String ecrivain;
      public String image;
      public String type;
+      
 
     public Recommandation(String id, String titre, String description, String ecrivain, String image, String type) {
         this.id = id;

@@ -10,13 +10,24 @@ package crudvfinal.entities;
  * @author yassi
  */
 public class client extends User {
+     public String etat;
 
     public client() {
+        
     }
 
     public client(int cin, String email, String nom, String prenom, String password) {
         super(cin, email, nom, prenom, password);
     }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+    
     
     
 }
