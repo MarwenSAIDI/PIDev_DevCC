@@ -30,7 +30,7 @@ public class FrontMainFX extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Utilisateur.fxml"));
-            Scene scene = new Scene(root,914,681);
+            Scene scene = new Scene(root,1600,1000);
             
             
             primaryStage.setScene(scene);
