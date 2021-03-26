@@ -158,7 +158,7 @@ public class PanierCRUD {
             ResultSet result = ste.executeQuery();
             
             
-            while(result.next()){
+            if(result.next()){
                 Panier p = new Panier();
                 p.setID_Panier(result.getInt("ID_Panier"));
                 p.setID_User(result.getInt("ID_User"));
@@ -167,6 +167,10 @@ public class PanierCRUD {
                 p.setStatus_panier(result.getString("Status_panier"));
 
 
+                paniers.add(p);
+            }
+            else{
+                Panier p = new Panier();
                 paniers.add(p);
             }
             

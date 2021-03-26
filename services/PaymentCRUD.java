@@ -64,13 +64,13 @@ public class PaymentCRUD {
     
     public void Modifier(Payment pay){
        
-        String sql = "UPDATE payments SET Prix_F = ?, Mode_Payment = ?, ID_Panier = ? WHERE ID_Payment = ?";
+        String sql = "UPDATE payments SET Prix_F = ?, Mode_Payment = ? WHERE ID_Payment = ?";
         try {
             ste = cnx.prepareStatement(sql);
             ste.setDouble(1, pay.getPrix_F());
             ste.setString(2, pay.getMode_Payment());
-            ste.setInt(3,pay.getID_Panier());
-            ste.setInt(4,pay.getID_Payment());
+            
+            ste.setInt(3,pay.getID_Payment());
             ste.executeUpdate();
             System.out.println("Payment Modifier");
             
