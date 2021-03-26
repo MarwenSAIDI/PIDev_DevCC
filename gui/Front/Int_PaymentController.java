@@ -32,12 +32,20 @@ import pidev.gui.UtilisateurController;
 import pidev.services.CommandeCRUD;
 import pidev.services.PanierCRUD;
 import java.lang.IllegalArgumentException;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import pidev.entities.Payment;
+import pidev.services.JavaMailUtil;
+import pidev.services.PaymentCRUD;
 import pidev.services.ProduitCRUD;
+import pidev.services.TextFieldException;
 
 /**
  * FXML Controller class
@@ -58,11 +66,24 @@ public class Int_PaymentController implements Initializable {
     private Double totale;
     
     private Label l_totale;
+    @FXML
+    private ComboBox<String> cb_pay;
+    @FXML
+    private Button b_valider;
+    @FXML
+    private TextField t_ch;
+    @FXML
+    private TextField t_num;
+    @FXML
+    private TextField t_cvv;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        cb_pay.getItems().addAll("Espece", "Carte");
+        cb_pay.getSelectionModel().select("Espèce");
         // TODO
         user = UtilisateurController.getUserG();
         PanierCRUD panc = new PanierCRUD();
@@ -70,6 +91,7 @@ public class Int_PaymentController implements Initializable {
         l_totale = new Label();
         v_box_1.setSpacing(25);
         try {
+            
             Panier panier = panc.getPanier(user.getID_user()).stream().findFirst().get();
             CommandeCRUD comc = new CommandeCRUD();
             int size  = (int) comc.getCommande(panier.getID_Panier()).stream().count();
@@ -87,6 +109,10 @@ public class Int_PaymentController implements Initializable {
                     Button b_inc = new Button("+");
                     Button b_dec = new Button("-");
                     Button b_delete = new Button();
+                    
+                    b_inc.setStyle("-fx-background-radius : 0px 50px 50px 0px");
+                    b_dec.setStyle("-fx-background-radius : 50px 0px 0px 50px");
+                    b_delete.setStyle("-fx-background-radius : 50px 50px 50px 50px");
                     
                     img_delete.setFitWidth(45);
                     img_delete.setFitHeight(45);
@@ -115,7 +141,7 @@ public class Int_PaymentController implements Initializable {
                         }
                         
                         try {
-                            totale = CalculeTotale(size, panier.getID_Panier());
+                            totale = CalculeTotale((int) comc.getCommande(panier.getID_Panier()).stream().count(), panier.getID_Panier());
                         } catch (SQLException ex) {
                             Logger.getLogger(Int_PaymentController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -126,7 +152,7 @@ public class Int_PaymentController implements Initializable {
                         l_quant.setText(String.valueOf(DecrementQauntitee(e, com)));
                         l_prix.setText(String.valueOf(com.getPrix()*com.getQuantitee()));
                             try {
-                                totale = CalculeTotale(size, panier.getID_Panier());
+                                totale = CalculeTotale((int) comc.getCommande(panier.getID_Panier()).stream().count(), panier.getID_Panier());
                             } catch (SQLException ex) {
                                 Logger.getLogger(Int_PaymentController.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -173,6 +199,15 @@ public class Int_PaymentController implements Initializable {
                         
                         l_totale.setText("Prix totale : "+String.valueOf(totale)); 
                     });
+                    
+                    b_valider.setOnAction(e -> {
+                        try {
+                            AjouterPayment(e, com.getID_Panier(), totale, cb_pay.getValue());
+                            
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Int_PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    });
                 }
                 catch(IllegalArgumentException ex){
                     System.out.println(ex.getMessage());
@@ -189,6 +224,7 @@ public class Int_PaymentController implements Initializable {
             img_retour.setFitWidth(45);
             img_retour.setFitHeight(45);
             Button b_retour = new Button();
+            b_retour.setStyle("-fx-background-radius : 50px 50px 50px 50px");
             b_retour.setGraphic(img_retour);
             b_retour.setOnAction(e->returnShop(e));
             
@@ -268,6 +304,112 @@ public class Int_PaymentController implements Initializable {
         comc.Supprimer(com.getID_Commande());
         h.getChildren().clear();
     }
+
+
+   private void AjouterPayment(ActionEvent event, int id, Double totale, String mp) throws SQLException {
+        
+       
+        if(mp == "Carte"){
+            try{
+                TextFieldException.verifEmpty(t_ch.getText());
+                String card_holder = t_ch.getText();
+                
+                TextFieldException.verifEmpty(t_num.getText());
+                String Num_card = t_num.getText();
+                
+                TextFieldException.verifEmpty(t_cvv.getText());
+                String cvv = t_cvv.getText();
+                
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Payment valider");
+                alert.setHeaderText("Voulez vous finaliser la commande");
+
+                ButtonType button_ok = new ButtonType("OK");
+                ButtonType button_cancel = new ButtonType("Annuer");   
+                alert.getButtonTypes().setAll(button_ok, button_cancel);
+
+                Optional<ButtonType> result = alert.showAndWait();
+
+                if(result.get() == button_ok){
+                    PaymentCRUD payc = new PaymentCRUD();
+                    Payment pay = new Payment();
+                    PanierCRUD panc = new PanierCRUD();
+                    Panier panier = panc.getPanier(user.getID_user()).stream().findFirst().get();
+                    panier.setStatus_panier("Payer");
+                    pay.setID_Panier(id);
+                    pay.setPrix_F(totale);
+                    pay.setMode_Payment(mp);
+
+                    panc.Modifier(panier);
+                    payc.Ajouter(pay);
+                    
+                    JavaMailUtil mail = new JavaMailUtil();
+                    mail.sendMail(user.getEmail(), "<h2>Monsieur "+user.getNom()+" "+user.getPrenom()+",</h2><p>Votre commande a bien été enregistrer. Vous la reseverée après <b>7 jours</b> ou moins.</p><p>Cordialement.</p>");
+                    
+                    
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
+                        Parent root;
+                        root = loader.load();
+                        b_valider.getScene().setRoot(root);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(Int_PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            catch(TextFieldException e){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Empty fields");
+                alert.setHeaderText(e.getMessage());
+
+                alert.showAndWait();
+            }
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Payment valider");
+            alert.setHeaderText("Voulez vous finaliser la commande");
+
+            ButtonType button_ok = new ButtonType("OK");
+            ButtonType button_cancel = new ButtonType("Annuler");   
+            alert.getButtonTypes().setAll(button_ok, button_cancel);
+
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.get() == button_ok){
+                PaymentCRUD payc = new PaymentCRUD();
+                Payment pay = new Payment();
+                PanierCRUD panc = new PanierCRUD();
+                Panier panier = panc.getPanier(user.getID_user()).stream().findFirst().get();
+                panier.setStatus_panier("Payer");
+                pay.setID_Panier(id);
+                pay.setPrix_F(totale);
+                pay.setMode_Payment(mp);
+
+                panc.Modifier(panier);
+                payc.Ajouter(pay);
+
+
+
+
+
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
+                    Parent root;
+                    root = loader.load();
+                    b_valider.getScene().setRoot(root);
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Int_PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+   
+    } 
 
    
 

@@ -175,6 +175,20 @@ public class AcceuilController implements Initializable {
                
             }
         }
+        else{
+            Panier pan_f = new Panier();
+            pan_f.setDate_C(LocalDate.now());
+            pan_f.setID_User(user.getID_user());
+            pan_f.setStatus_panier("En cours");
+                
+            panc.Ajouter(pan_f);
+                
+            pan_liste = panc.verifPanier(user.getID_user());
+            pan_f = pan_liste.stream().findFirst().get();
+            com.setID_Panier(pan_f.getID_Panier());
+                
+            comc.Ajouter(com);
+        }
         
         
     }
@@ -184,7 +198,7 @@ public class AcceuilController implements Initializable {
         Produit produit_S =  tab_prod.getSelectionModel().selectedItemProperty().get();
         t_nom.setText(produit_S.getNom());
         t_prix.setText(String.valueOf(produit_S.getPrix()));
-        
+        t_quant.setText("1");
         ID_produitSelectionner = produit_S.getID_Produit();
         
     }

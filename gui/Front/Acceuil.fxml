@@ -16,6 +16,6 @@
       <Button layoutX="18.0" layoutY="124.0" mnemonicParsing="false" onAction="#Decriment" prefHeight="25.0" prefWidth="25.0" text="-" />
       <Button layoutX="135.0" layoutY="124.0" mnemonicParsing="false" onAction="#Increment" text="+" />
       <Label fx:id="l_user" layoutX="467.0" layoutY="24.0" prefHeight="17.0" prefWidth="110.0" text="Label" />
-      <Button fx:id="b_panier" layoutX="619.0" layoutY="18.0" mnemonicParsing="false" onAction="#listeCommande" prefHeight="49.0" prefWidth="49.0" text="Panier" />
+      <Button fx:id="b_panier" layoutX="619.0" layoutY="18.0" mnemonicParsing="false" onAction="#listeCommande" prefHeight="49.0" prefWidth="49.0" style="-fx-background-radius: 50px 50px 50px 50px;" text="Panier" />
    </children>
 </AnchorPane>

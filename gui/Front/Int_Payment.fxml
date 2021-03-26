@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -8,9 +13,30 @@
 
 <AnchorPane id="AnchorPane" maxHeight="681.0" maxWidth="914.0" prefHeight="681.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gui.Front.Int_PaymentController">
    <children>
-      <VBox fx:id="v_box_2" layoutX="655.0" layoutY="123.0" prefHeight="543.0" prefWidth="245.0" />
+      <VBox fx:id="v_box_2" alignment="TOP_CENTER" layoutX="655.0" layoutY="15.0" prefHeight="651.0" prefWidth="245.0" spacing="30.0" style="-fx-background-color: #4682b4;">
+         <children>
+            <Label text="Payment" textFill="#fffbfb">
+               <font>
+                  <Font name="FontAwesome Regular" size="32.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cb_pay" prefHeight="35.0" prefWidth="184.0" style="-fx-background-radius: 50px 50px 50px 50px;" />
+            <TextField fx:id="t_ch" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="184.0" promptText="Nom de l'utilitaire de la carte : " style="-fx-background-radius: 50px 50px 50px 50px;" />
+            <TextField fx:id="t_num" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="184.0" promptText="Numéro de la carte :" style="-fx-background-radius: 50px 50px 50px 50px;" />
+            <TextField fx:id="t_cvv" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="184.0" promptText="CVV" style="-fx-background-radius: 50px 50px 50px 50px;" />
+            <Button fx:id="b_valider" mnemonicParsing="false" prefHeight="50.0" prefWidth="114.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: #ffef00;" text="Valider">
+               <font>
+                  <Font name="FontAwesome Regular" size="18.0" />
+               </font>
+            </Button>
+         </children></VBox>
       <VBox fx:id="v_box_1" layoutX="14.0" layoutY="14.0" prefHeight="651.0" prefWidth="590.0">
          <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Zenlife.jpg" />
+               </image>
+            </ImageView>
             <HBox fx:id="Title" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
