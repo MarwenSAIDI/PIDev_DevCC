@@ -5,6 +5,7 @@
  */
 package pidev.gui.Front;
 
+import com.jfoenix.controls.JFXButton;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +41,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import pidev.entities.Payment;
 import pidev.services.JavaMailUtil;
 import pidev.services.PaymentCRUD;
@@ -76,6 +80,16 @@ public class Int_PaymentController implements Initializable {
     private TextField t_num;
     @FXML
     private TextField t_cvv;
+    @FXML
+    private AnchorPane parent;
+    @FXML
+    private JFXButton btnarticle;
+    @FXML
+    private JFXButton btnlivre;
+    @FXML
+    private JFXButton deconnexion;
+    @FXML
+    private Label labelemail;
     /**
      * Initializes the controller class.
      */
@@ -410,6 +424,18 @@ public class Int_PaymentController implements Initializable {
         
    
     } 
+
+    @FXML
+    private void afficherarticle(MouseEvent event) {
+    }
+
+    @FXML
+    private void afficherlivre(MouseEvent event) {
+    }
+
+    @FXML
+    private void deconnecter(MouseEvent event) {
+    }
 
    
 
