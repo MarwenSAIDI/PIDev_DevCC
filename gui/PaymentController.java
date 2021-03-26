@@ -54,7 +54,7 @@ public class PaymentController implements Initializable {
     
     private int ID;
     @FXML
-    private TextField t_Pan;
+    private Label t_Pan;
 
     /**
      * Initializes the controller class.
@@ -173,6 +173,7 @@ public class PaymentController implements Initializable {
         Payment paymentM_S =  tab_pay.getSelectionModel().selectedItemProperty().get();
         t_pf.setText(String.valueOf(paymentM_S.getPrix_F()));
         cb_mp.getSelectionModel().select(paymentM_S.getMode_Payment());
+        t_Pan.setText(t_Pan.getText() + String.valueOf(paymentM_S.getID_Panier()));
         
         ID = paymentM_S.getID_Payment();
         
@@ -182,6 +183,7 @@ public class PaymentController implements Initializable {
     @FXML
     private void ModifierPayment(ActionEvent event) {
         try{
+            
             TextFieldException.verifEmpty(t_pf.getText());
             Double pf = Double.parseDouble(t_pf.getText());
             TextFieldException.verifEmpty(cb_mp.getValue());
@@ -225,6 +227,59 @@ public class PaymentController implements Initializable {
         try {
             tab_pay.getItems().addAll(payc.AfficherPayment());
         } catch (SQLException ex) {
+            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+   
+    @FXML
+    private void go_to_Panier(MouseEvent event) {
+        try{
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Panier.fxml"));
+            Parent root = loader.load();
+            
+            t_Pan.getScene().setRoot(root);
+          
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Payment(MouseEvent event) {
+        try{
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+            Parent root = loader.load();
+            t_Pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Commande(MouseEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Commande.fxml"));
+            Parent root = loader.load();
+            t_Pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Dashboard(MouseEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
+            Parent root = loader.load();
+            t_Pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
             Logger.getLogger(PaymentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -234,6 +234,60 @@ public class PanierController implements Initializable {
             Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+
+    @FXML
+    private void go_to_Panier(MouseEvent event) {
+        try{
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Panier.fxml"));
+            Parent root = loader.load();
+            
+            t_id.getScene().setRoot(root);
+          
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Payment(MouseEvent event) {
+        try{
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+            Parent root = loader.load();
+            t_id.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Commande(MouseEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Commande.fxml"));
+            Parent root = loader.load();
+            t_id.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Dashboard(MouseEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
+            Parent root = loader.load();
+            t_id.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     
 }

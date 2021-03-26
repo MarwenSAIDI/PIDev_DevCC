@@ -37,19 +37,15 @@ import pidev.services.TextFieldException;
  */
 public class CommandeController implements Initializable {
 
-    @FXML
     private TextField t_prod;
     @FXML
-    private TextField t_pay;
-    @FXML
+    private TextField t_pan;
     private TextField t_quant;
     @FXML
     private TableView<Commande> tab_C;
-    @FXML
     private Button ret;
     
     private int ID;
-    @FXML
     private ComboBox<String> cb_sc;
     
   
@@ -62,8 +58,7 @@ public class CommandeController implements Initializable {
         // TODO
         try{
             
-            cb_sc.getItems().addAll("Créer", "Payer","Livrer","Complete");
-            cb_sc.getSelectionModel().select("Créer");
+            
         
             CommandeCRUD comc = new CommandeCRUD();
 
@@ -95,19 +90,15 @@ public class CommandeController implements Initializable {
             TableColumn<Commande,String> prix = new TableColumn("Prix");
 
             prix.setCellValueFactory(
-                    new PropertyValueFactory<>("Prix"));
+                    new PropertyValueFactory<>("prix"));
 
-            TableColumn<Commande,String> s_c = new TableColumn("Status Commande");
-
-            s_c.setCellValueFactory(
-                    new PropertyValueFactory<>("Status_commande"));
-
+           
             tab_C.getColumns().add(id_com);
             tab_C.getColumns().add(id_p);
             tab_C.getColumns().add(id_pan);
             tab_C.getColumns().add(quant);
             tab_C.getColumns().add(prix);
-            tab_C.getColumns().add(s_c);
+
 
             try {
                 tab_C.getItems().addAll(comc.AfficherCommande());
@@ -134,7 +125,6 @@ public class CommandeController implements Initializable {
         }
     }    
 
-    @FXML
     private void Retour(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
         Parent root = loader.load();
@@ -142,27 +132,21 @@ public class CommandeController implements Initializable {
         ret.getScene().setRoot(root);
     }
 
-    @FXML
     private void AjouterCommande(ActionEvent event) {
         
         try{
             
-            TextFieldException.verifEmpty(t_prod.getText());
-            int id_p = Integer.parseInt(t_prod.getText());
+            TextFieldException.verifEmpty(t_pan.getText());
+            int id_p = Integer.parseInt(t_pan.getText());
             
-            TextFieldException.verifEmpty(t_pay.getText());
-            int pan = Integer.parseInt(t_pay.getText());
             
-            TextFieldException.verifEmpty(t_quant.getText());
-            int quant = Integer.parseInt(t_quant.getText());
             
-            TextFieldException.verifEmpty(cb_sc.getValue());
-            String statusC = cb_sc.getValue();
+            
 
             Commande com = new Commande();
             com.setID_Produit(id_p);
-            com.setID_Panier(pan);
-            com.setQuantitee(quant);
+            
+            
             
             CommandeCRUD comc = new CommandeCRUD();
             comc.Ajouter(com);
@@ -188,32 +172,25 @@ public class CommandeController implements Initializable {
         Commande commandeM_S =  tab_C.getSelectionModel().selectedItemProperty().get();
         
         ID = commandeM_S.getID_Commande();
-        t_prod.setText(String.valueOf(commandeM_S.getID_Produit()));
-        t_pay.setText(String.valueOf(commandeM_S.getID_Panier()));
-        t_quant.setText(String.valueOf(commandeM_S.getQuantitee()));
+        t_pan.setText(String.valueOf(commandeM_S.getID_Panier()));
+        
+        
         
         
     }
 
-    @FXML
     private void ModifierCommande(ActionEvent event) {
         
         try{
-            TextFieldException.verifEmpty(t_prod.getText());
-            int id_p = Integer.parseInt(t_prod.getText());
+            TextFieldException.verifEmpty(t_pan.getText());
+            int id_p = Integer.parseInt(t_pan.getText());
             
-            TextFieldException.verifEmpty(t_pay.getText());
-            int pan = Integer.parseInt(t_pay.getText());
-            
-            TextFieldException.verifEmpty(t_quant.getText());
-            int quant = Integer.parseInt(t_quant.getText());
             
 
             Commande com = new Commande();
             com.setID_Commande(ID);
             com.setID_Produit(id_p);
-            com.setID_Panier(pan);
-            com.setQuantitee(quant);
+            
             
             CommandeCRUD comc = new CommandeCRUD();
             comc.Modifier(com);
@@ -245,6 +222,63 @@ public class CommandeController implements Initializable {
             tab_C.getItems().addAll(comc.AfficherCommande());
         } catch (SQLException ex) {
             Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+
+
+    @FXML
+    private void go_to_Panier(MouseEvent event) {
+         try{
+        
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Panier.fxml"));
+            Parent root = loader.load();
+            
+            t_pan.getScene().setRoot(root);
+          
+        }
+        catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Payment(MouseEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+            Parent root = loader.load();
+            t_pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void go_to_Commande(MouseEvent event) {
+        try{
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Commande.fxml"));
+            Parent root = loader.load();
+            t_pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    @FXML
+    private void go_to_Dashboard(MouseEvent event) {
+        
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD.fxml"));
+            Parent root = loader.load();
+            t_pan.getScene().setRoot(root);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(CRUDController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
