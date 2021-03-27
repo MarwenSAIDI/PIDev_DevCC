@@ -35,7 +35,7 @@ public class ServiceProduit {
        
     
             try {
-                String requete = "insert into produit (id,nom,type,quantite,prix) values(?,?,?,?,?)";
+                String requete = "insert into produit (id,nom,type,quantite,prix,image) values(?,?,?,?,?,?)";
                 PreparedStatement pst = c.prepareStatement(requete);
                 pst.setInt(1, cl.getID());
                 pst.setString(2, cl.getNom());
@@ -43,6 +43,8 @@ public class ServiceProduit {
                 pst.setString(3, cl.getType());
                 pst.setInt(4, cl.getQuantite());
                 pst.setFloat(5, cl.getPrix());
+                                pst.setString(6, cl.getImage());
+
                 
                 
                 
@@ -67,7 +69,7 @@ public class ServiceProduit {
                 t.setType(rs.getString("Type"));
                  t.setQuantite(rs.getInt("Quantite"));
                  t.setPrix(rs.getFloat("Prix"));
-
+t.setImage(rs.getString("Image"));
 
                 Mylist.add(t);
             }
@@ -80,8 +82,8 @@ public class ServiceProduit {
 
     public void ModifierProduit(Produit cl) {
         try {int a=cl.getID();
-String requete = "UPDATE produit set  ID=?,nom = ?, type = ?, quantite = ?, ";
-requete += "prix = ? where id =? ";            
+String requete = "UPDATE produit set  ID=?,nom = ?, type = ?, quantite = ?,  ";
+requete += "prix = ? , image = ? where id =? ";            
 PreparedStatement pst = c.prepareStatement(requete);
               pst.setInt(1,cl.getID());
             pst.setString(2,cl.getNom());
@@ -89,8 +91,9 @@ PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(3,cl.getType());
             pst.setInt(4,cl.getQuantite());
                    pst.setFloat(5,cl.getPrix());
+                   pst.setString(6,cl.getImage());
                   
-                                pst.setInt(6,cl.getID());
+                                pst.setInt(7,cl.getID());
 
 
 
@@ -137,6 +140,7 @@ PreparedStatement pst = c.prepareStatement(requete);
                 cl.setType(rst.getString("Type"));
                 cl.setQuantite(rst.getInt("Quantite"));
                 cl.setPrix(rst.getFloat("Prix"));
+                cl.setImage(rst.getString("Image"));
              
                 ListProduit.add(cl);
             

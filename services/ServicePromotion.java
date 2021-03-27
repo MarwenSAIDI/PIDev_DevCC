@@ -83,17 +83,17 @@ public class ServicePromotion {
 
  public void ModifierPromotion(Promotion cc) {
         try {int a=cc.getIdP();
-String requete = "UPDATE promotion SET idP=?, valP=?, dateD=?, dateF=? WHERE where idP =? ";            
+String requete = "UPDATE promotion SET  valP=?, dateD=?, dateF=? WHERE idP =? ";            
 PreparedStatement pst = c.prepareStatement(requete);
-              pst.setInt(1,cc.getIdP());
-            pst.setInt(2,cc.getValP());
-               pst.setDate(3, new java.sql.Date(cc.getDateD().getTime()));
-                pst.setDate(4, new java.sql.Date(cc.getDateF().getTime()));
+             // pst.setInt(1,cc.getIdP());
+            pst.setInt(1,cc.getValP());
+               pst.setDate(2, new java.sql.Date(cc.getDateD().getTime()));
+                pst.setDate(3, new java.sql.Date(cc.getDateF().getTime()));
            // pst.setDate(3, (Date) cc.getDateD());
             //pst.setDate(4, (Date) cc.getDateF());
                    
                   
-                               pst.setInt(5,cc.getIdP());
+                               pst.setInt(4,cc.getIdP());
 
 
 
