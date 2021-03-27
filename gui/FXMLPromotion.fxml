@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLPromotionController">
+   <children>
+      <VBox layoutX="21.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Label text="id_promotion" />
+            <Label text="valeur_promotion" />
+            <Label text="date_debut" />
+            <Label text="date_fin" />
+         </children>
+      </VBox>
+      <VBox layoutX="129.0" layoutY="91.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+         <children>
+            <TextField fx:id="tfIDP" />
+            <TextField fx:id="tfValP" />
+            <DatePicker fx:id="tfDateD" />
+            <DatePicker fx:id="tfDateF" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvPromotion" layoutX="252.0" layoutY="85.0" prefHeight="263.0" prefWidth="324.0">
+        <columns>
+          <TableColumn fx:id="colIDP" prefWidth="59.0" text="ID" />
+          <TableColumn fx:id="colValP" prefWidth="81.0" text="Promotion" />
+            <TableColumn fx:id="colDateD" prefWidth="95.0" text="Date_debut" />
+            <TableColumn fx:id="colDateF" prefWidth="93.0" text="Date_fin" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfRecherche" layoutX="245.0" layoutY="44.0" promptText="Recherche" />
+      <Button layoutX="14.0" layoutY="298.0" mnemonicParsing="false" onAction="#AjouterPromotion" text="Ajouter" />
+      <Button layoutX="95.0" layoutY="298.0" mnemonicParsing="false" onAction="#ModifierPromotion" text="Modifier" />
+      <Button layoutX="177.0" layoutY="298.0" mnemonicParsing="false" onAction="#SuprimerPromotion" text="Suprimer" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#RetourOnClick" text="retour" />
+      <ImageView fx:id="image" fitHeight="59.0" fitWidth="108.0" layoutX="442.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@téléchargement.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
