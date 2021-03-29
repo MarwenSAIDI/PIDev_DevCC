@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="293.0" prefWidth="298.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientinterfaces.ItemProduitController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="293.0" prefWidth="298.0">
+         <children>
+            <HBox prefHeight="294.0" prefWidth="298.0">
+               <children>
+                  <Pane prefHeight="135.0" prefWidth="289.0">
+                     <children>
+                        <Label fx:id="nameLabel" layoutX="18.0" layoutY="26.0" prefHeight="49.0" prefWidth="254.0" text="Cherry">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="img" fitHeight="154.0" fitWidth="260.0" layoutX="14.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../CRUD/FruitMarket/src/img/cherry.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

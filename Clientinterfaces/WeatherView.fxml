@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="400.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.WeatherController">  
+   <stylesheets>  
+     <URL value="@WeatherStyle.css" />  
+   </stylesheets>  
+   <HBox alignment="BASELINE_CENTER" spacing="20" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">  
+     <fx:define>  
+       <ToggleGroup fx:id="cityTg" />  
+     </fx:define>  
+     <children>  
+       <RadioButton selected="true" text="Tunis">
+            <toggleGroup>
+               <ToggleGroup fx:id="cityTg" />
+            </toggleGroup></RadioButton>  
+       <RadioButton text="Sousse" toggleGroup="$cityTg" />  
+       <RadioButton text="Monastir" toggleGroup="$cityTg" />  
+     </children>  
+   </HBox>  
+   <Label fx:id="iconLbl" AnchorPane.topAnchor="50.0" />  
+   <Label fx:id="cityNameLbl" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />  
+   <Label fx:id="descriptionLbl" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="130.0" />  
+   <Label fx:id="temperatureLbl" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="50.0" />  
+   <Label fx:id="celsiusLbl" text="°C" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="68.0" />  
+   <Label text="P:" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="50.0" />  
+   <Label text="mbar" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="50.0" />  
+   <Label fx:id="pressureLbl" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="50.0" />  
+   <Label text="H:" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="70.0" />  
+   <Label text="\%" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="70.0" />  
+   <Label fx:id="humidityLbl" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="70.0" />  
+   <Label text="W:" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="90.0" />  
+   <Label text="kmph" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="90.0" />  
+   <Label fx:id="windLbl" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="90.0" />  
+   <Label fx:id="timeLbl" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="130.0" />  
+   <HBox fx:id="botBox" alignment="BASELINE_CENTER" prefWidth="400.0" spacing="20" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">  
+     <children>  
+       <Label fx:id="djoLbl" text="Eskander JGUIRIM" />  
+       <Label fx:id="owmLbl" text="Powered by OpenWeatherMap" />  
+     </children>  
+   </HBox>  
+ </AnchorPane>

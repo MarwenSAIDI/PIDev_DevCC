@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientinterfaces.AfficherProduitClientController">
+     <children>
+      <Pane layoutX="254.0" prefHeight="859.0" prefWidth="1411.0">
+         <children>
+            <VBox layoutX="14.0" layoutY="145.0" prefHeight="701.0" prefWidth="1038.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="813.0" prefWidth="1038.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="824.0" prefWidth="653.0" styleClass="transparent" stylesheets="@../zenlifecss/style.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="813.0" prefWidth="971.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="97.0" prefWidth="1394.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="177.0" prefWidth="1354.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Pane prefHeight="101.0" prefWidth="1354.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              
+                              <ImageView fx:id="b_panier" fitHeight="79.0" fitWidth="70.0" layoutX="1043.0" layoutY="24.0" onMouseClicked="#go_to_Panier" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/cart.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="labelemail" layoutX="1191.0" layoutY="21.0" prefHeight="27.0" prefWidth="263.0" textFill="#98a0a6">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="1412.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="EventChoisieCarte" alignment="CENTER" layoutX="885.0" layoutY="104.0" prefHeight="594.0" prefWidth="334.0" stylesheets="@../zenlifecss/style.css">
+               <children>
+                  <Pane prefHeight="29.0" prefWidth="285.0">
+                     <children>
+                        <Label fx:id="idEvent" layoutX="27.0" layoutY="6.0" prefHeight="17.0" prefWidth="63.0" text="ID : " textFill="#6187ed" />
+                        <Label fx:id="idOrganisateurLabel" layoutX="161.0" layoutY="6.0" prefHeight="17.0" prefWidth="112.0" text="Organisateur" textFill="#6187ed" />
+                        <Label fx:id="imgEventLabel" layoutX="91.0" layoutY="6.0" prefHeight="17.0" prefWidth="70.0" text="img:" textFill="#6187ed" />
+                     </children>
+                  </Pane>
+                  <HBox prefHeight="60.0" prefWidth="335.0">
+                     <children>
+                        <Label fx:id="TitreEventCarte" prefHeight="48.0" prefWidth="276.0" text="Titre f " textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox fx:id="h_prix_prod" alignment="CENTER" prefHeight="24.0" prefWidth="263.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="24.0" prefWidth="51.0" text="Prix :" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="TarifEventCarte" layoutX="90.0" layoutY="10.0" prefHeight="24.0" prefWidth="72.0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0" />
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="293.0">
+                     <children>
+                        <JFXButton fx:id="b_dec" prefHeight="39.0" prefWidth="61.0" style="-fx-background-color: #ffd800; -fx-background-radius: 50px 0px 0px 50px;" text="-">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField fx:id="tf_quant" alignment="CENTER" prefHeight="42.0" prefWidth="65.0" style="-fx-background-color: #ffffff; -fx-border-style: solid;" />
+                        <JFXButton fx:id="b_inc" layoutX="10.0" layoutY="10.0" prefHeight="39.0" prefWidth="61.0" style="-fx-background-color: #ffd800; -fx-background-radius: 0px 50px 50px 0px;" text="+">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <Button fx:id="b_Commande" mnemonicParsing="false" onAction="#AjouterCommande" prefHeight="38.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../zenlifecss/style.css" text="Ajouter au panier" textFill="#828282">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+               <styleClass>
+                  <String fx:value="chosen-fruit-card" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </VBox>
+         </children>
+      </Pane>
+    <Pane prefHeight="1027.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="sidebar">
+         <effect>
+            <DropShadow color="#ddd8d8" />
+         </effect>
+         <children>
+            <VBox alignment="CENTER" layoutY="141.0" prefHeight="400.0" prefWidth="250.0">
+               <children>
+                  <JFXButton alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les événements" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRecommandation" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gotorecommandation" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Recommandations" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnarticle" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#afficherarticle" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Articles" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnlivre" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#afficherlivre" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Livres" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#go_to_Produit_Client" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Produits" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Consultations" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="deconnexion" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#deconnecter" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Déconnexion" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <ImageView fitHeight="72.0" fitWidth="200.0" layoutX="25.0" layoutY="14.0">
+               <image>
+                  <Image url="@../images/logo.JPG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      
+   </children>
+</AnchorPane>

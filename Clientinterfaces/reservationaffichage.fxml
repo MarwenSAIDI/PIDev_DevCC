@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="905.0" prefWidth="945.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientinterfaces.ReservationaffichageController">
+    <stylesheets>
+        <URL value="@../zenlifecss/Clientinterface.css" />
+      <URL value="@../zenlifecss/reservationaffichage.css" />
+    </stylesheets>
+   <children>
+     <Pane prefHeight="1049.0" prefWidth="250.0" styleClass="sidebar">
+         <effect>
+            <DropShadow color="#ddd8d8" />
+         </effect>
+         <children>
+            <VBox alignment="CENTER" layoutY="65.0" prefHeight="400.0" prefWidth="250.0">
+               <children>
+                  <JFXButton fx:id="btnPageEvent" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#PageEvent" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Evénements" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="215.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Recommandations" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnarticle" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="193.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#afficherarticle" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Articles" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="btnlivre" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#afficherlivre" prefHeight="35.0" prefWidth="220.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Livres" textFill="#98a0a6">
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Produits" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="PageRDV" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#revenirpageaffichconsult" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Consultations" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="deconnexion" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="263.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#deconnecter" prefHeight="35.0" prefWidth="235.0" ripplerFill="#ff788a" styleClass="buttons" text="Deconnexion" textFill="#98a0a6">
+                     <graphic>
+                     </graphic>
+                     <font>
+                        <Font name="Century Gothic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <ImageView fitHeight="72.0" fitWidth="200.0" layoutX="25.0" layoutY="14.0">
+               <image>
+                  <Image url="@../images/logo.JPG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="1056.0" layoutY="119.0" prefHeight="21.0" prefWidth="469.0" style="-fx-font-size: 23;" text="Vos listes des Reservations effectué" />
+      <HBox layoutX="987.0" layoutY="36.0" prefHeight="34.0" prefWidth="66.0" />
+      <ScrollPane fx:id="scroll" layoutX="709.0" layoutY="160.0" prefHeight="776.0" prefWidth="1067.0" styleClass="transparent">
+         <content>
+            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <VBox fx:id="vboox" alignment="CENTER" layoutX="330.0" layoutY="193.0" prefHeight="703.0" prefWidth="347.0" stylesheets="@../zenlifecss/style.css">
+         <children>
+            <Label fx:id="TitreLable" prefHeight="144.0" prefWidth="327.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="typelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="datelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="heurelabel" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="23.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="consImg" fitHeight="173.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+               <children>
+                  <Button fx:id="supp" mnemonicParsing="false" onAction="#suppaction" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Supprimer RDV" textFill="#828282">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="prRdv" mnemonicParsing="false" onAction="#rdvaction" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@style.css" text="Modifier RDV" textFill="#828282">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="chosen-fruit-card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </VBox>
+      <ImageView fx:id="reservbtn" fitHeight="58.0" fitWidth="66.0" layoutX="373.0" layoutY="21.0" onMouseClicked="#reservbutton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/kisspng-robotic-vacuum-cleaner-washtenaw-community-college-5b239daac4bdd8.0189910215290607788059.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="rech" layoutX="1129.0" layoutY="68.0" onKeyPressed="#rechtest" onKeyTyped="#rechtest2" opacity="0.5" prefHeight="35.0" prefWidth="270.0" promptText="Rechercher une reservation" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+      <Label fx:id="nbreservations" alignment="CENTER" contentDisplay="CENTER" layoutX="453.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="37.0" styleClass="round_lbl" text="8" />
+      <Label fx:id="nbreservations1" alignment="CENTER" contentDisplay="CENTER" layoutX="494.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="37.0" styleClass="round_lbl2" text="8" />
+      <FontAwesomeIcon glyphStyle="-fx-fill:#98A0A6;" iconName="BELL" layoutX="646.0" layoutY="49.0" onMouseClicked="#notif" size="1.5em" />
+      <Label fx:id="labelemail" layoutX="1518.0" layoutY="65.0" prefHeight="27.0" prefWidth="263.0" textFill="#98a0a6">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <FontAwesomeIcon fx:id="btnUser" fill="#98a0a6" iconName="USER" layoutX="1781.0" layoutY="70.0" onMouseClicked="#gotoconsulterreservation" size="50" wrappingWidth="123.88468139648432" />
+      <ComboBox fx:id="comb" layoutX="1436.0" layoutY="118.0" onAction="#selectdate" onMouseClicked="#heurrr" prefHeight="25.0" prefWidth="215.0" promptText="Les reservationsdisponibles" styleClass="comboBox" stylesheets="@../zenlifecss/style.css" />
+      <ImageView fx:id="refresh" fitHeight="36.0" fitWidth="46.0" layoutX="1684.0" layoutY="114.0" onMouseClicked="#refreshclick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/reload.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

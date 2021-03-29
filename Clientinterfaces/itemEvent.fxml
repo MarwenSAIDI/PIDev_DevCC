@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="293.0" prefWidth="298.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientinterfaces.ItemEventController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="293.0" prefWidth="298.0">
+         <children>
+            <HBox prefHeight="294.0" prefWidth="298.0">
+               <children>
+                  <Pane prefHeight="135.0" prefWidth="289.0">
+                     <children>
+                        <Label fx:id="priceLable" layoutX="56.0" layoutY="50.0" prefHeight="31.0" prefWidth="125.0" text="lieu">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nameLabel" layoutX="12.0" layoutY="1.0" prefHeight="49.0" prefWidth="254.0" text="Cherry">
+                           <font>
+                              <Font name="Cambria Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" layoutX="75.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../CRUD/FruitMarket/src/img/cherry.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="13.0" layoutY="50.0" prefHeight="31.0" prefWidth="78.0" text="Lieu">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="13.0" layoutY="216.0" prefHeight="31.0" prefWidth="38.0" text="Le :" textFill="#b95c34">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dateEvent" layoutX="56.0" layoutY="216.0" prefHeight="31.0" prefWidth="138.0" text="date" textFill="#b95c34">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="13.0" layoutY="247.0" prefHeight="31.0" prefWidth="174.0" text="Cette événement est " textFill="#861818">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="etatLabel" layoutX="186.0" layoutY="247.0" prefHeight="31.0" prefWidth="97.0" text="etat" textFill="#861818">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
