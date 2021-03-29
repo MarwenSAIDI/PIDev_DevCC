@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authentification.InscriptionfxmlController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="1075.0" layoutY="705.0" prefHeight="121.0" prefWidth="110.0">
+         <children>
+            <AnchorPane layoutX="-1075.0" layoutY="-705.0" prefHeight="1088.0" prefWidth="994.0" style="-fx-background-color: #2262C6;;">
+               <children>
+                  <ImageView fitHeight="130.0" fitWidth="307.0" layoutX="136.0" layoutY="283.0">
+                     <image>
+                        <Image url="@../images/logo.JPG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Button layoutX="160.0" layoutY="-373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="2.0" style="-fx-background-color: TRANSPARENT;" />
+         </children>
+         <stylesheets>
+            <URL value="@stylesheet.css" />
+            <URL value="@../zenlifecss/stylesheet.css" />
+         </stylesheets>
+      </AnchorPane>
+      <TextField fx:id="textcin" layoutX="1213.0" layoutY="403.0" promptText="cin" />
+      <TextField fx:id="textemail" layoutX="1213.0" layoutY="440.0" promptText="emai" />
+      <TextField fx:id="textnom" layoutX="1213.0" layoutY="481.0" promptText="nom" />
+      <TextField fx:id="textprenom" layoutX="1213.0" layoutY="521.0" promptText="prenom" />
+      <Button fx:id="btninscri" layoutX="1228.0" layoutY="604.0" mnemonicParsing="false" onMouseClicked="#inscription" prefHeight="26.0" prefWidth="118.0" text="s'inscrire" />
+      <Label fx:id="cinlabel" layoutX="1410.0" layoutY="406.0" prefHeight="18.0" prefWidth="260.0" textFill="RED" />
+      <Label fx:id="emaillabel" layoutX="1410.0" layoutY="443.0" prefHeight="18.0" prefWidth="299.0" textFill="RED" />
+      <Label fx:id="labelpwd" layoutX="1410.0" layoutY="558.0" prefHeight="18.0" prefWidth="260.0" textFill="RED" />
+      <Label alignment="CENTER" layoutX="1225.0" layoutY="310.0" text="Inscription" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="textpassword" layoutX="1213.0" layoutY="555.0" promptText="password" />
+      <FontAwesomeIcon fx:id="retour" fill="#2262c6" iconName="CLOSE" layoutX="1802.0" layoutY="104.0" onMouseClicked="#retour" size="50" text="" wrappingWidth="39.028547286987305" />
+   </children>
+</AnchorPane>
