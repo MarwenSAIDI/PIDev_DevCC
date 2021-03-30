@@ -99,8 +99,6 @@ public class GestionReservationEventClientController implements Initializable {
                 DataBase db=new DataBase();
                private Connection con=db.getConnection();
     @FXML
-    private Button btnTherpeute;
-    @FXML
     private JFXButton btnarticle;
     @FXML
     private JFXButton btnlivre;
@@ -359,9 +357,53 @@ int cin = retourCin();
          
                  TarifEventLabel.setText(String.valueOf(taro));
                  
-ObservableList<Integer> listee;
-        listee = FXCollections.observableArrayList(1,2,3,4,5);
-        PlaceAreserverComboBox.setItems(listee);
+ int capacite_event=0;
+            int nbreservation_event=0;
+             try {
+     String requete = "SELECT capacite,nb_reservation FROM evenement  where ?=id ";
+     PreparedStatement pst = con.prepareStatement(requete);               
+     pst.setInt(1,ev.getId_event());
+     ResultSet e = pst.executeQuery();
+     
+     while (e.next()) {
+  capacite_event = e.getInt("capacite");
+  nbreservation_event=e.getInt("nb_reservation");
+}
+     
+    }
+catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            
+              
+             int place_restante= capacite_event-nbreservation_event;
+             System.out.println("nb:"+place_restante);
+ObservableList<Integer> list;
+        list = FXCollections.observableArrayList(1,2,3,4,5);
+        
+        if (place_restante==4) {
+    list.remove(4);
+}
+else if (place_restante==3)
+{
+    list.remove(3);
+    list.remove(2);
+}
+else if (place_restante==2)
+{
+    list.remove(4);
+    list.remove(3);
+    list.remove(2);
+}
+else if (place_restante==1)
+{
+     list.remove(4);
+    list.remove(3);
+    list.remove(2);
+    list.remove(1);
+
+}
+        PlaceAreserverComboBox.setItems(list);     
 
 
         if(ev.getNb_place()==1)
@@ -470,19 +512,6 @@ int reser=0;
         
     }
 
-    @FXML
-    private void RetourInterfaceTherapeute(ActionEvent event) {
-//         FXMLLoader loader = new FXMLLoader(getClass().getResource("CrudEvent.fxml"));
-//        
-//        
-//        try {
-//            Parent root = loader.load();
-//            btnPageEvent.getScene().setRoot(root);
-//            
-//        } catch (IOException ex) {
-//            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
 
     @FXML
     private void afficherarticle(MouseEvent event) {
@@ -507,3 +536,4 @@ int reser=0;
 
    
 }
+
