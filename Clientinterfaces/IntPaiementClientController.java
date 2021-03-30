@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,7 @@ import services.ProduitCRUD;
 import services.ServiceProduit;
 import services.TextFieldException;
 import services.UserSession;
+import utils.TwilioSMS;
 
 /**
  * FXML Controller class
@@ -232,11 +234,13 @@ public class IntPaiementClientController implements Initializable {
                     
                     b_valider.setOnAction(e -> {
                         try {
-                            AjouterPayment(e, com.getID_Panier(), totale, cb_pay.getValue());
+                            AjouterPayment(e, com.getID_Panier(), totale, cb_pay.getValue(),liste_com);
                             
                         } catch (SQLException ex) {
                             System.out.println(ex.getMessage());
                         }
+                        
+                        
                     });
                 }
                 catch(IllegalArgumentException ex){
@@ -335,7 +339,7 @@ public class IntPaiementClientController implements Initializable {
     }
 
 
-   private void AjouterPayment(ActionEvent event, int id, Double totale, String mp) throws SQLException {
+   private void AjouterPayment(ActionEvent event, int id, Double totale, String mp, List<Commande> liste_com) throws SQLException {
         
        
         if(mp == "Carte"){
@@ -419,10 +423,27 @@ public class IntPaiementClientController implements Initializable {
 
                 panc.Modifier(panier);
                 payc.Ajouter(pay);
+                
+                ServiceProduit prodc = new ServiceProduit();
+                
+                List<Produit> liste_prod = prodc.ListProduit();
+                
+                for(Commande com: liste_com){
+                    List<Produit> prod = liste_prod.stream().filter(p->p.getID_Produit() == com.getID_Produit())
+                                                      .collect(Collectors.toList());
+                    int new_quant = prod.get(0).getQuantitee() - com.getQuantitee();
+                    prod.get(0).setQuantitee(new_quant);
+                    
+                    prodc.ModifierProduit(prod.get(0));
+                    
+                }
+                
 
+                TwilioSMS twilio = new TwilioSMS();
+                
+                String msg = "Cher client,\nVotre commande n° "+String.valueOf(liste_com.get(0).getID_Panier())+" a  été effectuer avec succer.\nVous la receverer dans les prochains délais.\nZenlife";
 
-
-
+                twilio.sendSMS(msg, "+21652836953");
 
 
                 try {
@@ -462,5 +483,7 @@ public class IntPaiementClientController implements Initializable {
         
  Parent root = fxmlLoader.load();
  deconnexion.getScene().setRoot(root);}
+    
+    
     
 }
