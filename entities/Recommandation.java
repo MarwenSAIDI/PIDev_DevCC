@@ -16,19 +16,24 @@ public class Recommandation {
      public String ecrivain;
      public String image;
      public String type;
-      
+          public String etat;
 
-    public Recommandation(String id, String titre, String description, String ecrivain, String image, String type) {
+    public Recommandation(String id, String titre, String description, String ecrivain, String image, String type, String etat) {
         this.id = id;
         this.titre = titre;
         this.description = description;
         this.ecrivain = ecrivain;
         this.image = image;
         this.type = type;
+        this.etat = etat;
     }
 
     public Recommandation() {
     }
+
+      
+
+    
 
     
 
@@ -80,6 +85,23 @@ public class Recommandation {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public Recommandation(String id, String titre, String description, String ecrivain, String image, String type) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.ecrivain = ecrivain;
+        this.image = image;
+        this.type = type;
     }
           
 
