@@ -206,7 +206,7 @@ public class AfficherEventClientController implements Initializable {
                 ItemEventController itemEventController = fxmlLoader.getController();
                 itemEventController.setData(evenementss.get(i),myListener);
 
-                if (column == 2) {
+                if (column == 3) {
                     column = 0;
                     row++;
                 }
@@ -358,7 +358,7 @@ grid.setGridLinesVisible(false);
               ItemEventController itemEventController = fxmlLoader.getController();
                 itemEventController.setData(evenementss.get(i),myListener);
 
-                if (column == 2) {
+                if (column == 3) {
                     column = 0;
                     row++;
                 }
