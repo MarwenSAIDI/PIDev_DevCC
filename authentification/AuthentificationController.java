@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package authentification;
+import java.io.FileNotFoundException;
 import services.Clientservice;
 import services.Therapeuteservice;
 import services.UserSession;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.Rating;
+import utils.AuthentificationFB;
 
 /**
  * FXML Controller class
@@ -40,12 +44,20 @@ public class AuthentificationController implements Initializable {
     private Hyperlink btnoublier;
     @FXML
     private Hyperlink sinsc;
+    @FXML
+    private Rating rating;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Clientservice s= new Clientservice();
+        try {
+            rating.setRating(s.rating());
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }    
 
@@ -134,6 +146,8 @@ public class AuthentificationController implements Initializable {
             sinsc.getScene().setRoot(root);
         
     }
+
+    
     
     
 }
