@@ -31,6 +31,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -40,6 +41,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.internet.MimeBodyPart;
@@ -47,17 +49,19 @@ import javax.mail.internet.MimeMultipart;
 import services.ServiceEvenement;
 import services.ServiceReservationEvent;
 import services.UserSession;
+import therapeuteinterfaces.AjouterEventTherapeuteController;
+import therapeuteinterfaces.PostFbController;
 import utils.DataBase;
 import utils.JavaMailUtil;
 import utils.JavaMailUtil2;
 import utils.sqlexcept;
-
 /**
  * FXML Controller class
  *
  * @author user
  */
 public class RéservationClientEventController implements Initializable {
+public static Stage primaryStage;
 
     @FXML
     private Label TitreEventLabel;
@@ -282,6 +286,30 @@ if(nb_placeEmpty)
             System.out.println("problem");
         }
         
+        String detail_reserv="Mail client:"+labelemail.getText()+"\n id de l'évenement:"+idevent
+                +"\n Date de l'évenement:" + DateEventLabel.getText()+"\n Total payer : "+totalF+
+                "\nNombre de Place Réeserver :"+place+"\n Mode de Paiement:"+modePaiement ;
+          FXMLLoader loader1 = new FXMLLoader(getClass().getResource("QRCode.fxml"));
+             
+        try {
+            
+            Parent root = loader1.load();
+            Scene scene = new Scene(root); 
+            primaryStage = new Stage();
+            primaryStage.setScene(scene);  
+            primaryStage.setTitle("Ajouter un événement");  
+            
+            primaryStage.centerOnScreen();  
+            primaryStage.setResizable(false);  
+            primaryStage.setOpacity(1);  
+            primaryStage.show();
+            QRCodeController pdc = loader1.getController();
+            pdc.setdetail(detail_reserv);
+            
+
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                alert.setTitle("Bravo");
                alert.setHeaderText("Vous êtes inscrit à l'événement :" + TitreEventLabel.getText());
@@ -382,7 +410,6 @@ String prenom=" ";
             Parent root = loader.load();
             btnRecommandation.getScene().setRoot(root);    
     }
-    
 
     @FXML
     private void reservbutton(MouseEvent event) {
