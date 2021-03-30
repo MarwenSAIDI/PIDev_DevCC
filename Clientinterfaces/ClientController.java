@@ -8,18 +8,23 @@ package Clientinterfaces;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import services.Clientservice;
 import services.UserSession;
 
 /**
@@ -49,18 +54,55 @@ public class ClientController implements Initializable {
     private Label labelemail;
     @FXML
     private ImageView reservbtn;
-    @FXML
-    private JFXButton prod;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-                                           labelemail.setText( UserSession.instance.getUserName());
+        
+            // TODO
+            labelemail.setText( UserSession.instance.getUserName());
+            Clientservice sd=new Clientservice();
+            
+        try {
+            if(!sd.emailoui(labelemail.getText()))
+            {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("rating.fxml"));
+                
+                try {
+                    
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    Stage primaryStage = new Stage();
+                    primaryStage.setScene(scene);
+                    
+                    
+                    primaryStage.centerOnScreen();
+                    primaryStage.setResizable(false);
+                    primaryStage.setOpacity(1);
+                    primaryStage.show();
+                    
+                    
+                    
+                    
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(RatingController.class.getName()).log(Level.SEVERE, null, ex);
+                }}
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+                
+                
+                
+                
+            }
+         
+        
 
-    }    
+        
 
     @FXML
     private void gotoevent(MouseEvent event) throws IOException {
@@ -101,17 +143,6 @@ public class ClientController implements Initializable {
 
     @FXML
     private void reservbutton(MouseEvent event) {
-    }
-
-    @FXML
-    private void gotoprod(ActionEvent event) {
-               try {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Clientinterfaces/AfficherProduitClient.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            btnconsultation.getScene().setRoot(root);
-    } catch(Exception e) {
-       e.printStackTrace();
-      }
     }
     
 }

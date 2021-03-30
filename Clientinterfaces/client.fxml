@@ -61,7 +61,7 @@
                         <Insets left="30.0" top="5.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="prod" alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#gotoprod" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Produits" textFill="#98a0a6">
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="20.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="240.0" ripplerFill="#ff788a" styleClass="buttons" text="Les Produits" textFill="#98a0a6">
                      <graphic>
                      </graphic>
                      <font>
