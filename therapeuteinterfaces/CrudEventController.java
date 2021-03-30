@@ -76,7 +76,7 @@ import utils.sqlexcept;
  * @author user
  */
 public class CrudEventController implements Initializable {
-
+ public static String nom_img=" ";
     @FXML
     private TableView<Evenement> TableView;
     @FXML
@@ -745,7 +745,7 @@ public void viderChamps()
             Parent root = loader.load();
             PageReservationEventLabel.getScene().setRoot(root);
         } catch (IOException ex) {
-            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReservationEventTherapeuteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -884,9 +884,6 @@ public void viderChamps()
             
     }
 
-    @FXML
-    private void circleclick(MouseEvent event) {
-    }
 
     @FXML
     private void gotoaccueil(MouseEvent event) throws IOException {
@@ -900,6 +897,78 @@ public void viderChamps()
          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Recommandation.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             recommend.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void PartagerSurFB(MouseEvent event) {
+        
+        
+            Evenement ev = TableView.getSelectionModel().getSelectedItem();
+
+ if(ev==null)
+            {
+                Alert alert1 = new Alert(Alert.AlertType.WARNING);
+               alert1.setTitle("Alerte");
+               alert1.setHeaderText("Séléctionner un événement");
+               alert1.setContentText("Séléctionner un événement à partager d'abord");
+               
+               alert1.showAndWait(); 
+            }
+  else
+            {
+            int IdOrganisateur = ev.getId_organisateur();
+            String idOrga=Integer.toString(IdOrganisateur);
+
+            String Type= ev.getType();
+            String Titre= ev.getTitre();
+            String Description= ev.getDescription();
+            String LieuEvent= ev.getLieu();
+            
+            Date DateEvent= ev.getDate_event();
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+//            String strDate = dateFormat.format(DateEvent);  
+
+            String ImagEvent= ev.getImage();
+            float tarif= ev.getTarif();
+            String tarifF =Float.toString(tarif);
+            
+            int capacite = ev.getCapacite();
+            String capaciteF=Integer.toString(capacite);
+
+
+            /////new part
+            String nbReser=Integer.toString(ev.getNb_reservation());
+            String id=Integer.toString(ev.getId());
+            
+String texte_Poste= "Ne ratez pas le prochain événement " +Titre+" le " +DateEvent + " à " +LieuEvent
+        +".\nCréez un compte sur l'application Zenlife et profitez de nos offres exceptionnelles" ;
+
+nom_img=ImagEvent;
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("PostFb.fxml"));
+             
+        try {
+            
+            Parent root = loader.load();
+            Scene scene = new Scene(root); 
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);  
+           
+            
+            primaryStage.centerOnScreen();  
+            primaryStage.setResizable(false);  
+            primaryStage.setOpacity(1);  
+            primaryStage.show();
+            
+            PostFbController pdc = loader.getController();
+            pdc.setTextPostfield(texte_Poste);
+            pdc.setimgPost(ImagEvent);
+          
+            
+           // ModiferEventButton.getScene().setRoot(root);
+
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherEventClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }}
     }
 
 }
