@@ -1,6 +1,3 @@
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -176,7 +173,7 @@ public class RecommandationController implements Initializable {
             alert.showAndWait();
         } 
            else{
-         Recommandation e=new Recommandation (textid.getText(),texttitre.getText(),textdescription.getText(),textecrivain.getText(),textimage.getText(),texttype.getText());
+         Recommandation e=new Recommandation (textid.getText(),texttitre.getText(),textdescription.getText(),textecrivain.getText(),textimage.getText(),texttype.getText(),"attente");
 Servicerecommandation s=new Servicerecommandation();
 s.addreco(e);
        Servicerecommandation xs= new Servicerecommandation();
