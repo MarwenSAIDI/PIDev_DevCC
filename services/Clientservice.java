@@ -284,22 +284,75 @@ PreparedStatement pst = c.prepareStatement(requete);
             System.out.println(ex.getMessage());
         }}
     
+    public boolean emailoui(String a ) throws SQLException
+    { int i=0;   
+            String requete = "select * from rating where email =?   ";
+            PreparedStatement pst = c.prepareStatement(requete);
+                        pst.setString (1, a);
+                       
+
+
+            ResultSet rs = pst.executeQuery();
+while(rs.next()){i++;
+}
+ if (( i!=0))
+            {
+                return true;
+            }
+            else return false;
+
+        }
+    public void addratint(String a, double b) {
+        try {
+            String requete = "insert into rating (email,rating) values(?,?)";
+            PreparedStatement pst = c.prepareStatement(requete);
+            pst.setString(1,a);
+                        pst.setDouble(2, b);
+
+
+          
+
+            pst.executeUpdate();
+            System.out.println("ENtite added !!!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public double rating( ) throws SQLException
+    { int i=0;  double a=0; 
+            String requete = "select * from rating    ";
+            PreparedStatement pst = c.prepareStatement(requete);
+                       
+
+
+            ResultSet rs = pst.executeQuery();
+while(rs.next()){i++; a+=rs.getDouble("rating");
+}
+ if (( i!=0))
+            {
+return a/i;            }
+            else return 0;
+
+        }
     
     
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 

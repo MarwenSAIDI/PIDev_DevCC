@@ -29,7 +29,7 @@ public class Servicerecommandation {
 
     public void addreco(Recommandation cl) {
         try {
-            String requete = "insert into reco (id,titre,description,ecrivain,image,type) values(?,?,?,?,?,?)";
+            String requete = "insert into reco (id,titre,description,ecrivain,image,type,etat) values(?,?,?,?,?,?,?)";
             PreparedStatement pst = c.prepareStatement(requete);
             pst.setString(1, cl.getId());
             pst.setString(2, cl.getTitre());
@@ -38,6 +38,8 @@ public class Servicerecommandation {
             pst.setString(4, cl.getEcrivain());
             pst.setString(5, cl.getImage());
             pst.setString(6, cl.getType());
+                        pst.setString(6, "attente");
+
            
             pst.executeUpdate();
             System.out.println("ENtite added !!!!");
@@ -127,10 +129,12 @@ PreparedStatement pst = c.prepareStatement(requete);
      public List<Recommandation> Listrecoarticles() {
         List<Recommandation> Mylist = new ArrayList<>();
         try {
-            String requete = "select * from reco where type=?  ";
+            String requete = "select * from reco where type=? && etat=?  ";
             
             PreparedStatement pst = c.prepareStatement(requete);
                           pst.setString(1, "article");
+                                                    pst.setString(2, "confirme");
+
 
 
             ResultSet rs = pst.executeQuery();
@@ -160,10 +164,12 @@ PreparedStatement pst = c.prepareStatement(requete);
      public List<Recommandation> Listrecolivres() {
         List<Recommandation> Mylist = new ArrayList<>();
         try {
-            String requete = "select * from reco where type=?  ";
+            String requete = "select * from reco where type=? && etat=?  ";
             
             PreparedStatement pst = c.prepareStatement(requete);
                           pst.setString(1, "livre");
+                                                                              pst.setString(2, "confirme");
+
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -188,8 +194,57 @@ PreparedStatement pst = c.prepareStatement(requete);
         }
         return  Mylist;
     }
+     
+public void Updaterecoadminconfirm(Recommandation cl) {
+          try {
+String requete = "UPDATE reco set etat=? where id =? ";            
+PreparedStatement pst = c.prepareStatement(requete);
+              pst.setString(1,"confirme");
+            pst.setString(2, cl.getId());
 
+           
+
+
+            pst.executeUpdate();
+            System.out.println("Classroom Updated !!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
+     public List<Recommandation> Listrecoadmin() {
+        List<Recommandation> Mylist = new ArrayList<>();
+        try {
+            String requete = "select * from reco  ";
+            PreparedStatement pst = c.prepareStatement(requete);
+
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Recommandation p = new Recommandation();
+                p.setId(rs.getString("id"));
+                p.setTitre(rs.getString("titre"));
+                p.setDescription(rs.getString("description"));
+                p.setEcrivain(rs.getString("ecrivain"));
+                 p.setImage(rs.getString("image"));
+                 p.setType(rs.getString("type"));
+               p.setEtat(rs.getString("etat"));
+
+                 
+
+                 
+
+
+
+
+                Mylist.add(p);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return  Mylist;
+    }
+
     
     
     
