@@ -27,17 +27,17 @@
             <TextField fx:id="textadresse" layoutX="368.0" layoutY="324.0" promptText="adresse" />
 
       <TextField fx:id="textimage" layoutX="758.0" layoutY="323.0" onMouseClicked="#importimg" promptText="image" />
-      <Button fx:id="btninscr" layoutX="450.0" layoutY="391.0" mnemonicParsing="false" onAction="#ajouteruser" prefHeight="32.0" prefWidth="79.0" text="ajouter" />
-      <Button fx:id="btnmodif" layoutX="571.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#modifierchamp" prefHeight="32.0" prefWidth="79.0" text="Modifier" />
-      <Button fx:id="btnsupp" layoutX="678.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="32.0" prefWidth="79.0" text="supprimer" />
+      <Button fx:id="btninscr" layoutX="450.0" layoutY="391.0" mnemonicParsing="false" onAction="#ajouteruser" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: GREEN;" text="ajouter" />
+      <Button fx:id="btnmodif" layoutX="571.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#modifierchamp" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: YELLOW;" text="Modifier" />
+      <Button fx:id="btnsupp" layoutX="678.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="32.0" prefWidth="79.0" style="-fx-background-color: RED;" text="supprimer" />
       <TableView fx:id="table" layoutX="359.0" layoutY="454.0" onMouseClicked="#afficherform" prefHeight="472.0" prefWidth="784.0">
         <columns>
           <TableColumn fx:id="cin" prefWidth="98.40000915527344" text="cin" />
           <TableColumn fx:id="email" prefWidth="170.39996337890625" text="email" />
             <TableColumn fx:id="nom" prefWidth="76.79998779296875" text="nom" />
             <TableColumn fx:id="prenom" prefWidth="88.0" text="prenom" />
-            <TableColumn fx:id="password" minWidth="4.79998779296875" prefWidth="70.39996337890625" text="password" />
-            <TableColumn fx:id="numero" prefWidth="73.5999755859375" text="numero" />
+            <TableColumn fx:id="password" minWidth="4.79998779296875" prefWidth="78.4000244140625" text="mot de passe" />
+            <TableColumn fx:id="numero" prefWidth="65.5999755859375" text="numero" />
             <TableColumn fx:id="adresse" prefWidth="101.60009765625" text="adresse" />
             <TableColumn fx:id="image" prefWidth="79.2000732421875" text="image" />
         </columns>
@@ -74,7 +74,7 @@
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="PageReservationEventLabel" prefHeight="28.0" prefWidth="194.0" ripplerFill="#a82c2c" text="Gérer les recommandations" textFill="#a2bee8">
+                  <JFXButton fx:id="PageReservationEventLabel" onMouseClicked="#PageReservationEvent" prefHeight="28.0" prefWidth="194.0" ripplerFill="#a82c2c" text="Gérer les recommandations" textFill="#a2bee8">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -144,7 +144,7 @@
             <Image url="@../images/icons8_bell_24px.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="textpassword" layoutX="368.0" layoutY="287.0" promptText="password" />
+      <PasswordField fx:id="textpassword" layoutX="368.0" layoutY="287.0" promptText="mot de passe" />
       <ImageView fitHeight="51.0" fitWidth="190.0" layoutX="22.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
    <image>
       <Image url="@../images/logo.JPG" />

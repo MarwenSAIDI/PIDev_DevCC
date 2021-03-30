@@ -382,6 +382,13 @@ Therapeuteservice cs = new Therapeuteservice();
             Parent root = (Parent) fxmlLoader.load();
             textth.getScene().setRoot(root);
     }
+
+    @FXML
+    private void PageReservationEvent(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gestionreco.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            textth.getScene().setRoot(root);
+    }
    
     
 

@@ -5,12 +5,8 @@
  */
 package admininterfaces;
 
-import authentification.OublierController;
 import com.jfoenix.controls.JFXButton;
-import entities.Therapeute;
-import entities.client;
-import services.Clientservice;
-import services.Therapeuteservice;
+import entities.Recommandation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -21,17 +17,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import services.Servicerecommandation;
 import services.UserSession;
 
 /**
@@ -39,101 +33,96 @@ import services.UserSession;
  *
  * @author yassi
  */
-public class GestionclientController implements Initializable {
+public class GestiotnrecoController implements Initializable {
 
-    private TextField textemail;
     @FXML
-    private Button btnmodif;
-    @FXML
-    private Button btnsupp;
-    @FXML
-    private TableView<client> table;
-    @FXML
-    private TableColumn<client, Integer> cin;
-    @FXML
-    private TableColumn<client, String> email;
-    @FXML
-    private TableColumn<client, String> nom;
-    @FXML
-    private TableColumn<client, String>prenom;
-    @FXML
-    private TableColumn<client, String> password;
-    @FXML
-    private Label cinlabel;
-    @FXML
-    private Label emaillabel;
+    private AnchorPane yassine;
     @FXML
     private Label retour;
-    @FXML
-    private TableColumn<client, String> etat;
-    @FXML
-    private JFXButton textth;
     @FXML
     private JFXButton retour1;
     @FXML
     private JFXButton textclient1;
     @FXML
-    private JFXButton 
-            
-            
-            Label;
+    private JFXButton textth;
     @FXML
-    private AnchorPane yassine;
+    private JFXButton PageReservationEventLabel;
+    @FXML
+    private Button btnmodif;
+    @FXML
+    private Button btnsupp;
     @FXML
     private Label labelemail;
     @FXML
     private Hyperlink deconnecter;
+    @FXML
+    private TableView<Recommandation> table;
+    @FXML
+    private TableColumn<Recommandation, String> id;
+    @FXML
+    private TableColumn<Recommandation, String> titre;
+    @FXML
+    private TableColumn<Recommandation, String> description;
+    @FXML
+    private TableColumn<Recommandation, String> ecrivain;
+    @FXML
+    private TableColumn<Recommandation, String> image;
+    @FXML
+    private TableColumn<Recommandation, String> type;
+    @FXML
+    private TableColumn<Recommandation, String> etat;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                                           labelemail.setText( UserSession.instance.getUserName());
+        labelemail.setText(UserSession.instance.getUserName());
+        Servicerecommandation cs = new Servicerecommandation();
 
-        Clientservice cs = new Clientservice();
-
-         List<client> lc = cs.Listclient();
+         List<Recommandation> lc = cs.Listrecoadmin();
         
-          ObservableList<client> data =
+          ObservableList<Recommandation> data =
                   
         FXCollections.observableArrayList(lc );
+        id.setCellValueFactory(
+                new PropertyValueFactory<>("id"));
           
-        cin.setCellValueFactory(
-                new PropertyValueFactory<>("cin"));
-          
-        email.setCellValueFactory(
-                new PropertyValueFactory<>("email"));
+        titre.setCellValueFactory(
+                new PropertyValueFactory<>("titre"));
  
        
-        nom.setCellValueFactory(
-                new PropertyValueFactory<>("nom"));
+        description.setCellValueFactory(
+                new PropertyValueFactory<>("description"));
  
         
-        prenom.setCellValueFactory(
-                new PropertyValueFactory<>("prenom"));
+        ecrivain.setCellValueFactory(
+                new PropertyValueFactory<>("ecrivain"));
         
         
         
-        password.setCellValueFactory(
-                new PropertyValueFactory<>("password"));
-      etat.setCellValueFactory(
+        image.setCellValueFactory(
+                new PropertyValueFactory<>("image"));
+         type.setCellValueFactory(
+                new PropertyValueFactory<>("type"));
+         etat.setCellValueFactory(
                 new PropertyValueFactory<>("etat"));
+         
+      
  
         table.setItems(data);
-        
+        // TODO
     }    
-
-    @FXML
+@FXML
     private void modifier(MouseEvent event) {
-                 client t = table.getSelectionModel().getSelectedItem();         
-Clientservice s=new Clientservice();
-s.Updateinscritclient(t);
-Clientservice cs = new Clientservice();
+            Recommandation t = table.getSelectionModel().getSelectedItem();         
+Servicerecommandation s=new Servicerecommandation();
+s.Updaterecoadminconfirm(t);
+Servicerecommandation cs = new Servicerecommandation();
 
-         List<client> lc = cs.Listclient();
+         List<Recommandation> lc = cs.Listrecoadmin();
         
-          ObservableList<client> data =
+          ObservableList<Recommandation> data =
                   
         FXCollections.observableArrayList(lc );
           
@@ -142,36 +131,23 @@ Clientservice cs = new Clientservice();
  
  
         table.setItems(data);
-          OublierController.send("zenlifezenlife02@gmail.com","zenlife123",textemail.getText(),"Compte Zenlife","felicitations vous etes inscrits a zenlife merci de nous rejoindre");             
-
-    
-}
-        
-        
-    
-
-    @FXML
-    private void supprimer(MouseEvent event) {
-        client t = table.getSelectionModel().getSelectedItem();         
-Clientservice s=new Clientservice();
-s.Updatebannedclient(t);
-Clientservice cs = new Clientservice();
-
-         List<client> lc = cs.Listclient();
-        
-          ObservableList<client> data =
-                  
-        FXCollections.observableArrayList(lc );
-          
-      
- 
- 
- 
-        table.setItems(data);
-        
     }
 
     @FXML
+    private void supprimer(MouseEvent event) {
+         Recommandation t = table.getSelectionModel().getSelectedItem();         
+Servicerecommandation s=new Servicerecommandation();
+s.DeleteRECO(t.getId());
+Servicerecommandation xs= new Servicerecommandation();
+
+         List<Recommandation> lcd = xs.Listrecoadmin();
+        
+          ObservableList<Recommandation> datan =
+                  
+        FXCollections.observableArrayList(lcd );
+           table.setItems(datan);
+    }
+   @FXML
     private void deconnexion(MouseEvent event) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/authentification/authentification.fxml"));
@@ -235,21 +211,15 @@ Clientservice cs = new Clientservice();
 
     @FXML
     private void gotoaccueuil(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("accueiladmin.fxml"));
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("accueiladmin.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             textth.getScene().setRoot(root);
+        
     }
 
     @FXML
-    private void PageReservationEvent(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Gestionreco.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            textth.getScene().setRoot(root);
+    private void afficherform(MouseEvent event) {
     }
-
     
-
-    
-   
     
 }
