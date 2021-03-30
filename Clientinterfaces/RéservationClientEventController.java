@@ -40,11 +40,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMultipart;
 import services.ServiceEvenement;
 import services.ServiceReservationEvent;
 import services.UserSession;
 import utils.DataBase;
 import utils.JavaMailUtil;
+import utils.JavaMailUtil2;
 import utils.sqlexcept;
 
 /**
@@ -203,7 +208,7 @@ public void setimgEvent(Image imageF)
     }
 
     @FXML
-    private void AjouterReservationEvent(ActionEvent event) throws IOException, sqlexcept {
+    private void AjouterReservationEvent(ActionEvent event) throws IOException, sqlexcept, MessagingException {
         
          int user_id = 0 ;
             String IdOrganisateur = OrganisateurEventLabel.getText();
@@ -305,9 +310,8 @@ String prenom=" ";
                 
                String contenu=" Bonjour "+nom_p+" "+prenom+ " \n\n Vous avez réserver "+ nb_place+" place(s) à l'événement :" + TitreEventLabel.getText()
                        +". \n Cette événement aura lieu le "+DateEventLabel.getText()+ ". \n Soyez au rendez vous. \n \n L'équipe de ZenLife vous remercie pour votre confiance";
-                       
-                       
-                      JavaMailUtil.sendMail(email,contenu);
+            
+                      JavaMailUtil.sendMail(email,contenu );
 
                FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherEventClient.fxml"));
         try {
@@ -378,6 +382,7 @@ String prenom=" ";
             Parent root = loader.load();
             btnRecommandation.getScene().setRoot(root);    
     }
+    
 
     @FXML
     private void reservbutton(MouseEvent event) {
