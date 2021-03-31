@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Clientinterfaces.RatingController">
+   <children>
+      <Rating fx:id="rating" layoutX="76.0" layoutY="150.0" prefHeight="34.0" prefWidth="176.0" rating="0.0" />
+      <Pane prefHeight="102.0" prefWidth="600.0" style="-fx-background-color: #9D50A9;">
+         <children>
+            <Label layoutX="31.0" layoutY="14.0" prefHeight="44.0" prefWidth="520.0" text="Merci de nous donner votre avis" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="avis" layoutX="433.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#avis" prefHeight="34.0" prefWidth="121.0" style="-fx-background-color: #9D50A9;" text="donner avis" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

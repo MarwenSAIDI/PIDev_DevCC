@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../zenlifecss/stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="therapeuteinterfaces.CrudconsultationController">
+   <children>
+           <AnchorPane layoutX="-4.0" layoutY="84.0" prefHeight="916.0" prefWidth="264.0" styleClass="sidebar">
+         <children>
+            <Pane layoutX="30.0" layoutY="37.0" prefHeight="30.0" prefWidth="180.0" styleClass="labbtn">
+               <children>
+                  <Label alignment="CENTER" layoutX="41.0" layoutY="6.0" text="Les Gestions:" textFill="#2262c6">
+                     <font>
+                        <Font name="Berlin Sans FB" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <VBox alignment="CENTER_LEFT" fillWidth="false" layoutX="14.0" prefHeight="742.0" prefWidth="247.0" spacing="10.0">
+               <children>
+                  <JFXButton fx:id="btnaccueil" onMouseClicked="#gotoaccueil" prefHeight="51.0" prefWidth="194.0" ripplerFill="#a82c2c" text="Accueil" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEvent" onMouseClicked="#gotocrudevent" prefHeight="28.0" prefWidth="153.0" ripplerFill="#a82c2c" text="Gérer les événements" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="StatEvent" onMouseClicked="#gotostatevent" prefHeight="28.0" prefWidth="186.0" ripplerFill="#a82c2c" text="Statistique des événements" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="PageReservationEventLabel" onMouseClicked="#PageReservationEvent" prefHeight="28.0" prefWidth="230.0" ripplerFill="#a82c2c" text="Gérer les réservations événements" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="recommend" onMouseClicked="#Pagerecomm" prefHeight="28.0" prefWidth="189.0" ripplerFill="#a82c2c" text="Gérer les recommandations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btncons" onMouseClicked="#cons" prefHeight="28.0" prefWidth="162.0" ripplerFill="#a82c2c" text="Gérer les consultations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="demres" onMouseClicked="#demanderes" prefHeight="28.0" prefWidth="247.0" ripplerFill="#a82c2c" text="Gérer les demandes de consultations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="stat" onMouseClicked="#statclick" prefHeight="42.0" prefWidth="192.0" ripplerFill="#a82c2c" text="Statistique des réservations" textFill="#a2bee8">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            
+            </VBox>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="49.0" fitWidth="169.0" layoutX="51.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.JPG" />
+         </image>
+      </ImageView>
+      <TextField fx:id="rech" layoutX="570.0" layoutY="77.0" onKeyPressed="#rechtest" onKeyTyped="#rechtest2" opacity="0.5" prefHeight="31.0" prefWidth="240.0" promptText="Rechercher une consultation par Titre" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: #AEB2C3;">
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow color="#b9b6b6" />
+         </effect>
+      </TextField>
+      <ImageView fx:id="ntf" fitHeight="22.0" fitWidth="129.0" layoutX="690.0" layoutY="29.0" onMouseClicked="#notif" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_bell_24px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="714.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_help_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="18.0" layoutX="741.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8_settings_26px.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="358.0" layoutY="57.0" text="Consultation" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="740.0" layoutY="358.0" prefHeight="34.0" prefWidth="414.0" spacing="10.0">
+         <children>
+            <Button fx:id="insertButton" mnemonicParsing="false" onAction="#insertButton" prefHeight="30.0" prefWidth="136.0" style="-fx-background-color: green;" text="Ajouter" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateButton" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: orange;" text="Modifier" />
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButton" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: red;" text="Supprimer" />
+         </children>
+      </HBox>
+      <TextField fx:id="urlpath" layoutX="645.0" layoutY="199.0" onMouseClicked="#imp" prefHeight="25.0" prefWidth="149.0" promptText="L'url de l'image" />
+      <Label layoutX="535.0" layoutY="242.0" prefHeight="0.0" prefWidth="84.0" text="Emplacement">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="empField" layoutX="645.0" layoutY="239.0" prefHeight="25.0" prefWidth="149.0" />
+      <VBox layoutX="813.0" layoutY="50.0" prefHeight="35.0" prefWidth="149.0" />
+      <TableView fx:id="TableView" layoutX="393.0" layoutY="414.0" onMouseClicked="#afficherform" prefHeight="532.0" prefWidth="1075.0">
+         <columns>
+            <TableColumn fx:id="idcol" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="idtherapColumn" prefWidth="112.0" text="CIN Thérapeute" />
+            <TableColumn fx:id="titreColumn" prefWidth="125.60003662109375" text="Titre" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="219.0" text="Description" />
+            <TableColumn fx:id="emplacementColumn" minWidth="0.0" prefWidth="172.0" text="Emplacement" />
+            <TableColumn fx:id="imageColumn" prefWidth="240.333251953125" text="Image" />
+            <TableColumn fx:id="prixColumn" prefWidth="134.0" text="prix" />
+         </columns>
+      </TableView>
+      <TextField fx:id="TitreField" layoutX="645.0" layoutY="162.0" />
+      <Label layoutX="597.0" layoutY="165.0" text="Titre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="844.0" layoutY="161.0" prefHeight="20.0" prefWidth="112.0" text="Description">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="descField" layoutX="952.0" layoutY="150.0" prefHeight="136.0" prefWidth="240.0" />
+      <Label layoutX="587.0" layoutY="202.0" prefHeight="20.0" prefWidth="44.0" text="Image">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="prixField" layoutX="645.0" layoutY="274.0" />
+      <Label layoutX="535.0" layoutY="277.0" prefHeight="0.0" prefWidth="84.0" text="Prix">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="photo" fitHeight="187.0" fitWidth="222.0" layoutX="1248.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="vider" layoutX="1184.0" layoutY="358.0" mnemonicParsing="false" onAction="#viderButton" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: grey;" text="Vider" />
+      <Label fx:id="labelemail" layoutX="1106.0" layoutY="34.0" prefHeight="30.0" prefWidth="316.0" textFill="#055cd5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="deconnecter" layoutX="1220.0" layoutY="77.0" onMouseClicked="#deconnexion" text="se deconnecter" />
+   </children>
+</AnchorPane>
