@@ -1,0 +1,52 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}ReservationEvent index{% endblock %}
+
+
+
+
+{% block container %}
+    <h1>Gestion des événements</h1>
+
+    <div class="card-body">
+        <div class="table-responsive" center>
+            <table class="table table-bordered" style="white-space: nowrap;width: 70%" center >
+                <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>IdOrganisateur</th>
+                    <th>IdClient</th>
+                    <th>IdEvent</th>
+                    <th>NbPlace</th>
+                    <th>Total</th>
+                    <th>ModePaiement</th>
+                    <th>Etat</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for reservation_event in reservation_events %}
+                    <tr>
+                        <td>{{ reservation_event.id }}</td>
+                        <td>{{ reservation_event.idOrganisateur }}</td>
+                        <td>{{ reservation_event.idClient }}</td>
+                        <td>{{ reservation_event.idEvent }}</td>
+                        <td>{{ reservation_event.nbPlace }}</td>
+                        <td>{{ reservation_event.total }}</td>
+                        <td>{{ reservation_event.modePaiement }}</td>
+                        <td>{{ reservation_event.etat }}</td>
+
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+
