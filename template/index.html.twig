@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consultation index{% endblock %}
+
+{% block container %}
+
+    <h1>Consultation index</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Consultation</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idtherapeute</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Emplacement</th>
+                <th>Prix</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consultation in consultations %}
+            <tr>
+                <td>{{ consultation.getId() }}</td>
+                <td>{{ consultation.getIdtherapeute() }}</td>
+                <td>{{ consultation.getTitre() }}</td>
+                <td>{{ consultation.getDescription() }}</td>
+                <td>{{ consultation.getEmplacement() }}</td>
+                <td>{{ consultation.getPrix() }}</td>
+                <td>     <img src="{{ asset('uploads/images/' ~ consultation.getImage()) }}"
+                              alt = "" style = "width: 300px ; height:300px"></td>>
+                <td>
+            {# <a href="{{ path('consultation_show', {'id': consultation.getId()}) }}">show</a> #}
+                    <a href="{{ path('consultation_edit', {'id': consultation.getId()}) }}" class="btn btn-warning btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-info-circle"></i>
+                                        </span>
+                        <span class="text">Modifier</span>
+                    </a>
+                    {{ include('consultation/_delete_form.html.twig') }}
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
+</div>
+
+    <a href="{{ path('consultation_new') }}" class="btn btn-success btn-icon-split">Ajouter une consultation</a>
+
+{% endblock %}

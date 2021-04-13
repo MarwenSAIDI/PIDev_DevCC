@@ -1,0 +1,67 @@
+{{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+<div>
+
+        <div class="form-group">
+            {{ form_label(form.titre, "titre ") }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.titre, {'attr':{'class':'form-control col-sm-6'}}) }}
+        </div>
+        {{ form_errors (form.titre) }}
+
+        <div class="form-group">
+            {{ form_label(form.description, "description ") }}
+
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.description, {'attr':{'class':'form-control col-sm-6'}}) }}
+        </div>
+    {{ form_errors (form.description) }}
+
+    <div class="form-group">
+            {{ form_label(form.prix, "prix ") }}
+
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.prix, {'attr':{'class':'form-control col-sm-6'}}) }}
+        </div>
+    {{ form_errors (form.prix) }}
+
+
+    <div class="form-group">
+            {{ form_label(form.emplacement, "emplacement ") }}
+
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.emplacement, {'attr':{'class':'form-control col-sm-6'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_errors (form.emplacement) }}
+
+            {{ form_label(form.image, "image ") }}
+
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.image, {'attr':{'class':'dropify','data-default-file': '/zenlifeproject/uploads/images/' ~ consultation.getImage()}} ) }}
+        </div>
+    {{ form_errors (form.image) }}
+    {{ consultation.getImage() }}
+    <div>
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+
+
+{{ form_end(form) }}
+<script language="javascript">
+    $( document ).ready(function() {
+$('.dropify').dropify({
+    messages: {
+        'default': '',
+        'replace': '',
+        'remove':  'Supprimer image',
+        'error':   ''
+    }
+})
+    });
+</script>
