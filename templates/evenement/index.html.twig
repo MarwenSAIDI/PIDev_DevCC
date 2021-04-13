@@ -1,0 +1,63 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block container %}
+    <h1>Gestion des événements</h1>
+
+
+<div class="card-body">
+    <div class="table-responsive">
+
+    <div class="container" >
+        <table class="table table-bordered" style="white-space: nowrap;width: 70%" >
+            <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th >IdOrganisateur</th>
+                <th>Type</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>DateEvent</th>
+                <th>Image</th>
+                <th>Tarif</th>
+                <th>Capacite</th>
+                <th>NbReservation</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.idOrganisateur }}</td>
+                <td>{{ evenement.type }}</td>
+                <td>{{ evenement.titre }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.dateEvent ? evenement.dateEvent|date('Y-m-d') : '' }}</td>
+                <td><img src="{{ asset('imgEvent/')~ evenement.image }}"
+                alt="" style="width: 80px;height:80px " >
+                </td>
+                <td>{{ evenement.tarif }}</td>
+                <td>{{ evenement.capacite }}</td>
+                <td>{{ evenement.nbReservation }}</td>
+                <td>{{ evenement.etat }}</td>
+                <td>
+                    <a  class="btn btn-success btn-circle btn-lg" href="{{ path('evenement_edit', {'id': evenement.getId()}) }}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-circle btn-lg"   href="{{ path('evenement_delete', {'id': evenement.getId()}) }}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+            </table>
+        </div></div></div>
+    <a href="{{ path('evenement_new') }}">Create new</a>
+{% endblock %}

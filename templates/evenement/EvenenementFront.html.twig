@@ -1,0 +1,45 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block body %}
+<section class="ftco-section bg-light" id="blog-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-10 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Nos évènements</h2>
+                <p>Choisissez l'évènement qui vous convient parmi une multitude d'évènements </p>
+            </div>
+        </div>
+        <div class="row d-flex">
+
+
+
+            {% for evenement in evenements %}
+            <div class="col-md-4 ftco-animate">
+                <div class="blog-entry">
+                    <a href="blog-single.html" class="block-20" >
+
+                        <img src="{{ asset('imgEvent/')~ evenement.image }}"  >
+                    </a>
+                    <div class="text d-block">
+                        <div class="meta mb-3">
+                            <div><a href="#">{{ evenement.dateEvent ? evenement.dateEvent|date('Y-m-d') : '' }}</a></div>
+                            <div><a href="#">Thérapeute</a></div>
+                            <div><a href="#" class="meta-chat"></a></div>
+                        </div>
+                        <h3 class="heading"><a href="#">{{ evenement.titre }}</a></h3>
+                        <p>{{ evenement.description }}</p>
+                        <p><a href="{{ path('lireplusevenement_index', {'id': evenement.getId()}) }}" class="btn btn-primary py-2 px-3">Réserver</a></p>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
