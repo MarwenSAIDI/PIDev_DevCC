@@ -1,0 +1,46 @@
+{{ form_start(form,{'attr':{'class': 'appointment-form ftco-animate fadeInUp ftco-animated', 'novalidate': 'novalidate'}}) }}
+
+
+
+<div>
+
+    <div class="form-group">
+        {{ form_label(form.date, "date de reservation ") }}
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.date) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.type, "Type ") }}
+
+    </div>
+    <div class="form-group">
+        <div class="form-field">
+        {{ form_widget(form.type) }}
+    {{ form_errors (form.type) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-field">
+            <div class="select-wrap">
+        {{ form_label(form.heure, "heure ") }}
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="form-group">
+        {{ form_widget(form.heure) }}
+    </div>
+    {{ form_errors (form.heure) }}
+
+
+    <div>
+        <button class="btn btn-success">{{ button_label|default('Reserver') }}</button>
+    </div>
+</div>
+
+
+{{ form_end(form) }}
