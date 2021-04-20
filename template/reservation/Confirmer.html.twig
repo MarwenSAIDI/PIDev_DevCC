@@ -1,8 +1,8 @@
-<form method="post" action="{{ path('reservation_confirm', {'idreservation': reservations.getIdreservation()}) }}" onsubmit="return confirm('Voulez vous vraiment confirmé cette reservations?');">
+<form method="post" action="{{ path('reservation_modifier', {'idreservation': reservations.getIdreservation()}) }}" onsubmit="return confirm('Voulez vous vraiment confirmer cette reservations?');">
     <input type="hidden" name="_token" value="{{ csrf_token('modifier' ~ reservations.getIdreservation()) }}">
     <span class="icon text-white-50">
 
-    <button class="btn btn-info btn-icon-split">Confirmer cette réservation</button>
+    <button class="btn btn-success btn-icon-split">Confirmé cette reservation</button>
                                                 </span>
 
 
