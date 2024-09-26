@@ -1,0 +1,13 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Commandes{% endblock %}
+
+{% block container %}
+    <h1>Edit Commandes</h1>
+
+    {{ include('commandes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('commandes_index') }}">back to list</a>
+
+
+{% endblock %}
