@@ -5,9 +5,20 @@
  */
 package admininterfaces;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import entities.Commande;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,6 +44,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import services.CommandeCRUD;
 
 /**
@@ -270,13 +282,71 @@ public class CommandeController implements Initializable {
         }
 
     }
-    @FXML
-    private void gotoaccueil(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("accueiladmin.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            textth.getScene().setRoot(root);
-    }
 
-    
+    @FXML
+    private void toPDF(MouseEvent event) throws DocumentException, SQLException {
+        final DirectoryChooser directoryChooser = new DirectoryChooser();
+        final File selectedDirectory = directoryChooser.showDialog(null);
+        if (selectedDirectory != null) {
+            
+            String dest = selectedDirectory.getAbsolutePath()+"\\Table des commandes.pdf";
+            
+            
+            try {
+                Document doc = new Document();
+                PdfWriter.getInstance(doc, new FileOutputStream(dest));
+                
+                doc.open();
+                
+                String img = "src/images/logo.JPG";
+                com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(img);
+                doc.add(image);
+                //Test PDF
+                PdfPTable table = new PdfPTable(5);
+
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(0f);
+                table.setSpacingAfter(0f);
+
+                // first row
+                PdfPCell cell = new PdfPCell(new Phrase("Tableau des commandes"));
+                cell.setColspan(5);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setPadding(5.0f);
+                cell.setBackgroundColor(new BaseColor(140, 221, 8));
+                table.addCell(cell);
+
+                table.addCell("ID Commande");
+                table.addCell("ID Produit");
+                table.addCell("ID Panier");
+                table.addCell("Quantitée");
+                table.addCell("Prix DNT");
+                
+
+               
+                
+                CommandeCRUD comc = new CommandeCRUD();
+                List<Commande> liste_com = comc.AfficherCommande();
+                for (int i = 0; i < liste_com.size(); i++){
+                    
+                    table.addCell(String.valueOf(liste_com.get(i).getID_Commande()));
+                    table.addCell(String.valueOf(liste_com.get(i).getID_Produit()));
+                    table.addCell(String.valueOf(liste_com.get(i).getID_Panier()));
+                    table.addCell(String.valueOf(liste_com.get(i).getQuantitee()));
+                    table.addCell(String.valueOf(liste_com.get(i).getPrix()));
+                }
+                doc.add(table); 
+                
+               
+                doc.close();
+                System.out.println("done");
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex.getMessage());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+
+    }
 
 }
